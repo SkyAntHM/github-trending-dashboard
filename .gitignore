@@ -1,0 +1,16 @@
+# Cloudflare 凭据（绝对不能 commit）
+.env
+.wrangler/
+
+# 抓取/翻译中间产物
+trending.json
+index_template.html
+
+# 部署/调试脚本
+scrape.py
+translate.py
+render.py
+deploy.py
+run.sh
+check.py
+verify.py
