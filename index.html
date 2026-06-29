@@ -1,150 +1,476 @@
 <!DOCTYPE html>
-<html lang="zh-CN"> 
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GitHub 趋势排行榜 - 2026-06-25</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<style>*{margin:0;padding:0;box-sizing:border-box}
-body{background:#0d1117;color:#e6edf3;font-family:Inter,-apple-system,sans-serif;min-height:100vh}
-.bg{position:fixed;top:0;left:0;width:100%;height:100%;background-image:linear-gradient(rgba(88,166,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(88,166,255,0.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0}
-.glow{position:fixed;border-radius:50%;filter:blur(180px);opacity:0.1;width:600px;height:600px;pointer-events:none;z-index:0;animation:f 25s ease-in-out infinite}
-.g1{top:-200px;left:-200px;background:#58a6ff}
-.g2{bottom:-200px;right:-200px;background:#f97316;animation-delay:-12s}
-.g3{top:40%;left:60%;background:#a855f7;animation-delay:-6s}
-@keyframes f{0%,100%{transform:translate(0,0) scale(1)}25%{transform:translate(60px,-40px) scale(1.1)}50%{transform:translate(-40px,60px) scale(0.95)}75%{transform:translate(-60px,-30px) scale(1.05)}}
-.header{position:relative;z-index:10;background:linear-gradient(135deg,rgba(13,17,23,0.98),rgba(22,27,34,0.95));backdrop-filter:blur(24px);border-bottom:1px solid rgba(48,54,61,0.8);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
-.hl{display:flex;align-items:center;gap:18px}
-.logo{width:50px;height:50px;background:linear-gradient(135deg,#f97316,#ea580c);border-radius:12px;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 32px rgba(249,115,22,0.4);animation:pulse 3s ease-in-out infinite}
-.logo svg{width:26px;height:26px;fill:#fff}
-@keyframes pulse{0%,100%{box-shadow:0 8px 32px rgba(249,115,22,0.4)}50%{box-shadow:0 8px 48px rgba(249,115,22,0.6),0 0 70px rgba(249,115,22,0.3)}}
-.title h1{font-size:26px;font-weight:800;background:linear-gradient(135deg,#fff,#8b949e);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.title .dt{color:#8b949e;font-size:13px;margin-top:4px}
-.stats{display:flex;gap:16px}
-.si{text-align:center;padding:10px 18px;background:rgba(88,166,255,0.08);border:1px solid rgba(88,166,255,0.2);border-radius:10px;transition:all 0.3s}
-.si:hover{background:rgba(88,166,255,0.15);transform:translateY(-2px)}
-.sv{font-size:20px;font-weight:800;color:#58a6ff}
-.sl{font-size:11px;color:#8b949e;margin-top:2px}
-.sub{position:relative;z-index:10;background:rgba(22,27,34,0.7);backdrop-filter:blur(12px);border-bottom:1px solid rgba(48,54,61,0.8);padding:12px 48px;font-size:13px;color:#8b949e;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
-.sub svg{width:16px;height:16px;fill:#f97316;flex-shrink:0}
-.sub span{opacity:0.7}
-.main{position:relative;z-index:5;padding:24px 48px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr)!important;gap:24px!important;align-items:start!important}
-.col{display:flex;flex-direction:column;gap:12px;animation:slideUp 0.7s ease-out backwards}
-.col:nth-child(1){animation-delay:0.1s}.col:nth-child(2){animation-delay:0.2s}.col:nth-child(3){animation-delay:0.3s}
-@keyframes slideUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
-.st{font-size:18px;font-weight:700;padding:10px 0;display:flex;align-items:center;gap:10px}
-.st::after{content:'';flex:1;height:2px;border-radius:1px;margin-left:10px}
-.st svg{width:20px;height:20px}
-.daily .st{color:#f97316}.daily .st::after{background:linear-gradient(90deg,#f97316,transparent)}.daily .st svg{fill:#f97316}
-.weekly .st{color:#58a6ff}.weekly .st::after{background:linear-gradient(90deg,#58a6ff,transparent)}.weekly .st svg{fill:#58a6ff}
-.monthly .st{color:#10b981}.monthly .st::after{background:linear-gradient(90deg,#10b981,transparent)}.monthly .st svg{fill:#10b981}
-.card{background:rgba(22,27,34,0.9);backdrop-filter:blur(24px);border-radius:18px;border:1px solid rgba(48,54,61,0.8);overflow:hidden;transition:all 0.4s}
-.card:hover{transform:translateY(-4px);border-color:rgba(88,166,255,0.3);box-shadow:0 20px 60px rgba(0,0,0,0.4)}
-.ch{padding:14px 20px;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(48,54,61,0.8)}
-.daily .ch{background:linear-gradient(135deg,rgba(249,115,22,0.12),rgba(234,88,12,0.04))}
-.weekly .ch{background:linear-gradient(135deg,rgba(59,130,246,0.12),rgba(37,99,235,0.04))}
-.monthly .ch{background:linear-gradient(135deg,rgba(16,185,129,0.12),rgba(5,150,105,0.04))}
-.chL{display:flex;align-items:center;gap:8px}
-.daily .chL{color:#f97316}.weekly .chL{color:#58a6ff}.monthly .chL{color:#10b981}
-.chL svg{width:16px;height:16px}
-.daily .chL svg{fill:#f97316}.weekly .chL svg{fill:#58a6ff}.monthly .chL svg{fill:#10b981}
-.chR{font-size:10px;padding:3px 8px;border-radius:12px;background:rgba(255,255,255,0.05);color:#8b949e}
-.repo{padding:14px 20px;border-bottom:1px solid rgba(48,54,61,0.8);display:flex;flex-direction:column;gap:6px;transition:all 0.3s;position:relative;overflow:hidden}
-.repo::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;opacity:0;transition:opacity 0.3s}
-.daily .repo::before{background:#f97316}.weekly .repo::before{background:#58a6ff}.monthly .repo::before{background:#10b981}
-.repo:hover::before{opacity:1}.repo:hover{background:rgba(88,166,255,0.04);padding-left:24px}
-.repo:last-child{border-bottom:none}
-.repoTop{background:linear-gradient(135deg,rgba(249,115,22,0.08),rgba(234,88,12,0.02))}
-.weekly .repoTop{background:linear-gradient(135deg,rgba(59,130,246,0.08),rgba(37,99,235,0.02))}
-.monthly .repoTop{background:linear-gradient(135deg,rgba(16,185,129,0.08),rgba(5,150,105,0.02))}
-.rb{position:absolute;top:10px;right:14px;width:24px;height:24px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff}
-.r1{background:linear-gradient(135deg,#ffd700,#ff8c00);box-shadow:0 3px 12px rgba(255,215,0,0.5)}
-.r2{background:linear-gradient(135deg,#c0c0c0,#a0a0a0);box-shadow:0 3px 12px rgba(192,192,192,0.4)}
-.r3{background:linear-gradient(135deg,#cd7f32,#a0522d);box-shadow:0 3px 12px rgba(205,127,50,0.4)}
-.rd{background:rgba(255,255,255,0.1);color:#8b949e}
-.rn{display:flex;align-items:center;gap:6px;padding-right:34px}
-.rn a{font-size:13px;font-weight:600;color:#58a6ff;text-decoration:none;transition:color 0.2s;display:flex;align-items:center;gap:4px}
-.rn a:hover{color:#79c0ff}
-.rn svg{width:12px;height:12px;fill:#58a6ff;opacity:0.7}
-.rd2{font-size:11px;color:#8b949e;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.rs{display:flex;align-items:center;gap:12px;font-size:11px;flex-wrap:wrap}
-.stars{color:#f0883e;font-weight:700;display:flex;align-items:center;gap:3px}
-.stars svg{width:12px;height:12px;fill:#f0883e}
-.forks{color:#8b949e;display:flex;align-items:center;gap:3px}
-.forks svg{width:12px;height:12px;fill:#8b949e}
-.gw{display:inline-flex;align-items:center;gap:3px;padding:3px 8px;border-radius:12px;font-weight:700;font-size:10px;margin-left:auto}
-.daily .gw{background:rgba(249,115,22,0.12);color:#f97316}
-.weekly .gw{background:rgba(59,130,246,0.12);color:#58a6ff}
-.monthly .gw{background:rgba(16,185,129,0.12);color:#10b981}
-.gw svg{width:10px;height:10px;fill:currentColor}
-.rl{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-.lt{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:10px;font-size:10px;background:rgba(255,255,255,0.05);color:#8b949e;border:1px solid rgba(255,255,255,0.08)}
-.ld{width:7px;height:7px;border-radius:50%;background:linear-gradient(135deg,#3572A5,#4582b5)}
-.footer{position:relative;z-index:10;text-align:center;padding:20px 48px;color:#484f58;font-size:11px;border-top:1px solid rgba(48,54,61,0.8);background:rgba(13,17,23,0.9)}
-.footer a{color:#58a6ff;text-decoration:none;transition:color 0.2s}
-.footer a:hover{color:#79c0ff}
-.footer-brand{margin-top:8px}
-.repo{animation:fadeIn 0.5s ease-out backwards}
-@keyframes fadeIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-@media(max-width:1400px){.grid{grid-template-columns:repeat(3,1fr)!important;gap:20px!important}.header{padding:20px 32px}.sub{padding:10px 32px}.main{padding:20px 32px}.footer{padding:16px 32px}}
-@media(max-width:1100px){.grid{grid-template-columns:repeat(2,1fr)!important;gap:20px!important}.header-stats{display:none}}
-@media(max-width:700px){.grid{grid-template-columns:1fr!important;gap:24px!important}.header{padding:16px 16px;flex-direction:column;gap:12px}.sub{padding:10px 16px;flex-direction:column;gap:6px}.main{padding:16px 16px}.footer{padding:16}}</style>
+<title>GitHub Trending - 2026-06-29</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-sans/style.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-mono/style.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#fafafa;--bg-card:rgba(255,255,255,0.72);--bg-card-solid:#fff;
+  --border:rgba(0,0,0,0.06);--border-hover:rgba(0,0,0,0.12);
+  --text-primary:#0a0a0a;--text-secondary:#52525b;--text-muted:#a1a1aa;
+  --accent:#2563eb;--accent-light:rgba(37,99,235,0.08);--accent-glow:rgba(37,99,235,0.15);
+  --r-card:16px;--r-sm:10px;--r-pill:999px;
+  --font-sans:'Geist Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+  --font-mono:'Geist Mono','SF Mono',monospace;
+  --shadow-sm:0 1px 2px rgba(0,0,0,0.04),0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md:0 4px 12px rgba(0,0,0,0.06),0 2px 4px rgba(0,0,0,0.04);
+  --shadow-lg:0 8px 30px rgba(0,0,0,0.08),0 4px 12px rgba(0,0,0,0.04);
+  --shadow-xl:0 20px 60px rgba(0,0,0,0.1),0 8px 20px rgba(0,0,0,0.06);
+}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{background:var(--bg);color:var(--text-primary);font-family:var(--font-sans);line-height:1.6;min-height:100dvh;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;border:none;cursor:pointer;background:none}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important}}
+
+/* ===== MESH GRADIENT BG ===== */
+.mesh-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.mesh-blob{position:absolute;border-radius:50%;filter:blur(120px);opacity:0.5;will-change:transform}
+.blob-1{width:600px;height:600px;background:radial-gradient(circle,#93c5fd,#bfdbfe);top:-10%;left:-5%}
+.blob-2{width:500px;height:500px;background:radial-gradient(circle,#a5b4fc,#c7d2fe);top:30%;right:-10%}
+.blob-3{width:450px;height:450px;background:radial-gradient(circle,#6ee7b7,#a7f3d0);bottom:10%;left:20%}
+.blob-4{width:350px;height:350px;background:radial-gradient(circle,#fbbf24,#fde68a);top:60%;left:50%}
+
+/* ===== NOISE OVERLAY ===== */
+.noise{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:0.03;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat:repeat;background-size:256px 256px}
+
+/* ===== LAYOUT ===== */
+.page{max-width:1200px;margin:0 auto;padding:0 24px;position:relative;z-index:2}
+
+/* ===== HEADER (glass) ===== */
+.header{position:sticky;top:0;z-index:50;
+  background:rgba(250,250,250,0.7);
+  backdrop-filter:blur(20px) saturate(1.8);
+  -webkit-backdrop-filter:blur(20px) saturate(1.8);
+  border-bottom:1px solid var(--border)}
+.header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px;padding:0 24px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-icon{width:36px;height:36px;background:linear-gradient(135deg,#2563eb,#7c3aed);border-radius:10px;display:grid;place-items:center;color:#fff;font-size:18px;box-shadow:0 4px 14px rgba(37,99,235,0.3)}
+.brand-title{font-size:16px;font-weight:700;letter-spacing:-0.03em;color:var(--text-primary)}
+.brand-date{font-size:11px;color:var(--text-muted);font-family:var(--font-mono);letter-spacing:0.02em}
+.header-right{display:flex;align-items:center;gap:16px}
+.stat-pill{display:flex;align-items:center;gap:8px;padding:6px 14px;background:var(--accent-light);border:1px solid rgba(37,99,235,0.12);border-radius:var(--r-pill);font-size:12px;color:var(--accent);font-weight:600}
+.stat-pill i{font-size:14px}
+/* ===== HERO ===== */
+.hero{padding:80px 0 48px;text-align:center}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 16px;background:var(--bg-card);backdrop-filter:blur(12px);border:1px solid var(--border);border-radius:var(--r-pill);font-size:12px;color:var(--text-secondary);font-weight:500;margin-bottom:20px;box-shadow:var(--shadow-sm)}
+.hero-badge .dot{width:6px;height:6px;border-radius:50%;background:#22c55e;animation:pulse-dot 2s ease-in-out infinite}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
+.hero h1{font-size:clamp(2.5rem,6vw,4.2rem);font-weight:800;letter-spacing:-0.04em;line-height:1.05;color:var(--text-primary);margin-bottom:16px}
+.hero h1 span{background:linear-gradient(135deg,#2563eb,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:clamp(0.95rem,2vw,1.15rem);color:var(--text-secondary);max-width:520px;margin:0 auto;line-height:1.7}
+/* Stats row */
+.hero-stats{display:flex;justify-content:center;gap:32px;margin-top:36px}
+.hero-stat{text-align:center}
+.hero-stat-val{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;letter-spacing:-0.04em;font-family:var(--font-mono);color:var(--text-primary);line-height:1}
+.hero-stat-label{font-size:12px;color:var(--text-muted);margin-top:4px;font-weight:500}
+.hero-stat-divider{width:1px;height:40px;background:var(--border);align-self:center}
+
+/* ===== TABS ===== */
+.tabs-wrap{display:flex;align-items:center;justify-content:center;gap:12px;margin:12px 0 8px;flex-wrap:wrap}
+.tabs{display:inline-flex;gap:3px;background:var(--bg-card-solid);border:1px solid var(--border);border-radius:var(--r-pill);padding:4px;box-shadow:var(--shadow-sm)}
+.tab{padding:8px 22px;border-radius:var(--r-pill);font-size:13px;font-weight:500;color:var(--text-muted);transition:all 0.35s cubic-bezier(0.16,1,0.3,1);display:flex;align-items:center;gap:6px;position:relative;overflow:hidden}
+.tab::before{content:'';position:absolute;inset:0;border-radius:inherit;background:var(--accent);opacity:0;transition:opacity 0.35s cubic-bezier(0.16,1,0.3,1);z-index:0}
+.tab:hover{color:var(--text-secondary)}
+.tab.active{color:#fff;font-weight:600}
+.tab.active::before{opacity:1}
+.tab i,.tab span{position:relative;z-index:1}
+.tab i{font-size:15px}
+.tab-meta{font-size:12px;color:var(--text-muted);font-family:var(--font-mono)}
+
+/* ===== PANEL TRANSITION ===== */
+.panel-wrap{position:relative;min-height:400px}
+.panel{display:none;opacity:0}
+.panel.active{display:block;opacity:1}
+
+/* ===== FEATURED GRID ===== */
+.featured{display:grid;grid-template-columns:1.15fr 1fr 1fr;gap:16px;padding:20px 0}
+.feat-card{background:var(--bg-card);backdrop-filter:blur(16px) saturate(1.6);-webkit-backdrop-filter:blur(16px) saturate(1.6);border:1px solid var(--border);border-radius:var(--r-card);padding:24px;display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden;transition:all 0.4s cubic-bezier(0.16,1,0.3,1);box-shadow:var(--shadow-sm);transform-style:preserve-3d;perspective:800px}
+.feat-card:hover{box-shadow:var(--shadow-xl);border-color:var(--border-hover)}
+.feat-card .shine{position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,0.15) 0%,transparent 50%);pointer-events:none;opacity:0;transition:opacity 0.4s;z-index:1}
+.feat-card:hover .shine{opacity:1}
+.feat-rank{position:absolute;top:14px;right:14px;font-size:12px;font-weight:800;width:28px;height:28px;border-radius:8px;display:grid;place-items:center;color:#fff;z-index:2}
+.rank-1{background:linear-gradient(135deg,#f59e0b,#d97706);box-shadow:0 4px 14px rgba(245,158,11,0.35)}
+.rank-2{background:linear-gradient(135deg,#94a3b8,#64748b);box-shadow:0 4px 14px rgba(148,163,184,0.3)}
+.rank-3{background:linear-gradient(135deg,#d97706,#b45309);box-shadow:0 4px 14px rgba(217,119,6,0.3)}
+.feat-name{font-size:14px;font-weight:600;padding-right:40px;position:relative;z-index:2}
+.feat-name a{color:var(--accent);display:inline-flex;align-items:center;gap:5px;transition:color 0.2s}
+.feat-name a:hover{color:#1d4ed8}
+.feat-name i{font-size:12px;opacity:0.5}
+.feat-desc{font-size:13px;color:var(--text-secondary);line-height:1.7;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;flex:1;position:relative;z-index:2}
+.feat-card:first-child .feat-desc{-webkit-line-clamp:4}
+.feat-meta{display:flex;align-items:center;gap:12px;font-size:11px;font-family:var(--font-mono);position:relative;z-index:2}
+.feat-stars{color:#eab308;font-weight:700;display:inline-flex;align-items:center;gap:3px}
+.feat-stars i{font-size:13px}
+.feat-forks{color:var(--text-muted);display:inline-flex;align-items:center;gap:3px}
+.feat-forks i{font-size:13px}
+.feat-lang{margin-left:auto;display:inline-flex;align-items:center;gap:5px;padding:2px 9px;background:rgba(0,0,0,0.04);border-radius:var(--r-pill);font-size:11px;color:var(--text-secondary);border:1px solid rgba(0,0,0,0.04)}
+.lang-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+
+/* ===== REPO LIST ===== */
+.repo-list{display:flex;flex-direction:column;background:var(--bg-card);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--border);border-radius:var(--r-card);overflow:hidden;box-shadow:var(--shadow-sm)}
+.repo-row{display:grid;grid-template-columns:36px 1fr auto;gap:12px;align-items:start;padding:14px 20px;border-bottom:1px solid rgba(0,0,0,0.04);transition:background 0.25s;position:relative}
+.repo-row:last-child{border-bottom:none}
+.repo-row::before{content:'';position:absolute;inset:0;background:radial-gradient(600px circle at var(--row-x,50%) var(--row-y,50%),rgba(37,99,235,0.04),transparent 40%);opacity:0;transition:opacity 0.4s;pointer-events:none}
+.repo-row:hover::before{opacity:1}
+.repo-row:hover{background:rgba(255,255,255,0.5)}
+.repo-rank{font-size:12px;font-weight:700;font-family:var(--font-mono);color:var(--text-muted);text-align:center;padding-top:2px}
+.repo-info{display:flex;flex-direction:column;gap:3px;min-width:0}
+.repo-name{font-size:13px;font-weight:600;display:flex;align-items:center;gap:5px}
+.repo-name a{color:var(--accent);display:inline-flex;align-items:center;gap:4px;transition:color 0.2s}
+.repo-name a:hover{color:#1d4ed8}
+.repo-name i{font-size:11px;opacity:0.4}
+.repo-desc{font-size:12px;color:var(--text-secondary);line-height:1.65;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.repo-right{display:flex;align-items:center;gap:12px;font-size:11px;font-family:var(--font-mono);white-space:nowrap;padding-top:2px}
+.repo-stars{color:#eab308;font-weight:700;display:inline-flex;align-items:center;gap:3px}
+.repo-stars i{font-size:12px}
+.repo-forks{color:var(--text-muted);display:inline-flex;align-items:center;gap:3px}
+.repo-forks i{font-size:12px}
+.repo-lang{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;background:rgba(0,0,0,0.03);border-radius:var(--r-pill);font-size:10px;color:var(--text-secondary);border:1px solid rgba(0,0,0,0.04)}
+
+/* ===== LANG MARQUEE ===== */
+.lang-marquee{overflow:hidden;padding:24px 0;mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.marquee-track{display:flex;gap:12px;width:max-content;animation:marquee 30s linear infinite}
+.marquee-track:hover{animation-play-state:paused}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.lang-tag{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;background:var(--bg-card-solid);border:1px solid var(--border);border-radius:var(--r-pill);font-size:12px;font-weight:500;color:var(--text-secondary);white-space:nowrap;transition:border-color 0.2s,box-shadow 0.2s}
+.lang-tag:hover{border-color:var(--accent-glow);box-shadow:0 2px 12px rgba(37,99,235,0.1)}
+
+/* ===== FOOTER ===== */
+.footer{border-top:1px solid var(--border);padding:28px 0;text-align:center;font-size:12px;color:var(--text-muted);position:relative;z-index:2;background:rgba(250,250,250,0.8);backdrop-filter:blur(12px)}
+.footer a{color:var(--accent);font-weight:500;transition:color 0.2s}
+.footer a:hover{color:#1d4ed8}
+.footer-brand{margin-top:6px;font-size:11px}
+
+/* ===== SCROLL REVEAL ===== */
+.reveal{opacity:0;transform:translateY(20px)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .featured{grid-template-columns:1fr}
+  .feat-card:first-child .feat-desc{-webkit-line-clamp:3}
+}
+@media(max-width:640px){
+  .page{padding:0 16px}
+  .header-inner{height:56px;padding:0 16px}
+  .header-right{display:none}
+  .brand-title{font-size:14px}
+  .hero{padding:48px 0 32px}
+  .hero-stats{gap:20px}
+  .hero-stat-divider{height:30px}
+  .tabs-wrap{margin:8px 0 4px}
+  .tab{padding:7px 14px;font-size:12px}
+  .tab-meta{display:none}
+  .featured{padding:12px 0;gap:12px}
+  .feat-card{padding:18px}
+  .repo-row{grid-template-columns:28px 1fr;padding:12px 14px}
+  .repo-right{display:none}
+}
+</style>
 </head>
 <body>
-<div class="bg"></div>
-<div class="glow g1"></div>
-<div class="glow g2"></div>
-<div class="glow g3"></div>
+
+<!-- Mesh gradient background -->
+<div class="mesh-bg">
+  <div class="mesh-blob blob-1"></div>
+  <div class="mesh-blob blob-2"></div>
+  <div class="mesh-blob blob-3"></div>
+  <div class="mesh-blob blob-4"></div>
+</div>
+<div class="noise"></div>
+
+<!-- Header -->
 <header class="header">
-  <div class="hl">
-    <div class="logo"><svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg></div>
-    <div class="title"><h1>GitHub 趋势排行榜</h1><div class="dt">更新时间：2026-06-25 15:54</div></div>
-  </div>
-  <div class="stats">
-    <div class="si"><div class="sv">26</div><div class="sl">跟踪项目</div></div>
-    <div class="si"><div class="sv">11</div><div class="sl">编程语言</div></div>
-    <div class="si"><div class="sv">24h</div><div class="sl">实时更新</div></div>
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-icon"><i class="ti ti-brand-github"></i></div>
+      <div>
+        <div class="brand-title">GitHub Trending</div>
+        <div class="brand-date">2026-06-29</div>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="stat-pill"><i class="ti ti-flame"></i>26 热门项目</div>
+      <div class="stat-pill"><i class="ti ti-code"></i>8 种语言</div>
+    </div>
   </div>
 </header>
-<div class="sub"><svg viewBox="0 0 24 24"><path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"/></svg><span>追踪 GitHub 热门项目</span><span>|</span><span>数据来源：github.com/trending</span><span>|</span><span>每日 / 每周 / 每月 Stars</span></div>
-<main class="main">
-<div class="grid">
-<div class="col daily"><div class="st"><svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>每日热门</div><div class="card"><div class="ch"><div class="chL"><svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>每日 Top 10</div><div class="chR">今日</div></div><div class="repo repoTop"><div class="rb r1">1</div><div class="rn"><a href="https://github.com/calesthio/OpenMontage" target="_blank">calesthio/OpenMontage<svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></a></div><div class="rd2">世界上首个开源的智能体视频生产系统，集成 12 条流水线、52 个工具、500+ 智能体技能，把你的 AI 编程助手变成完整的视频制作工作室。</div><div class="rs"><span class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>20.6k</span><span class="forks"><svg viewBox="0 0 24 24"><path d="M6 2C3.24 2 1 4.24 1 7v7c0 2.76 2.24 5 5 5h3v-2H6c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h6c1.66 0 3 1.34 3 3v7c0 1.66-1.34 3-3 3h-3v2h3c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H6z"/></svg>2.3k</span></div><div class="rl"><span class="lt"><span class="ld"></span>Python</span></div></div>
-<div class="repo"><div class="rb r2">2</div><div class="rn"><a href="https://github.com/ZhuLinsen/daily_stock_analysis" target="_blank">ZhuLinsen/daily_stock_analysis<svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></a></div><div class="rd2">基于 LLM 的多市场股票智能分析系统：多源行情、实时新闻、决策看板与自动推送，支持零成本定时运行。</div><div class="rs"><span class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>49.1k</span><span class="forks"><svg viewBox="0 0 24 24"><path d="M6 2C3.24 2 1 4.24 1 7v7c0 2.76 2.24 5 5 5h3v-2H6c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h6c1.66 0 3 1.34 3 3v7c0 1.66-1.34 3-3 3h-3v2h3c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H6z"/></svg>43.2k</span></div><div class="rl"><span class="lt"><span class="ld"></span>Python</span></div></div>
-<div class="repo"><div class="rb r3">3</div><div class="rn"><a href="https://github.com/apple/container" target="_blank">apple/container<svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></a></div><div class="rd2">在 Mac 上使用轻量级虚拟机创建和运行 Linux 容器的工具，使用 Swift 编写，针对 Apple silicon 优化。</div><div class="rs"><span class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>42.6k</span><span class="forks"><svg viewBox="0 0 24 24"><path d="M6 2C3.24 2 1 4.24 1 7v7c0 2.76 2.24 5 5 5h3v-2H6c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h6c1.66 0 3 1.34 3 3v7c0 1.66-1.34 3-3 3h-3v2h3c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H6z"/></svg>1.3k</span></div><div class="rl"><span class="lt"><span class="ld"></span>Swift</span></div></div>
-<div class="repo"><div class="rb rd">4</div><div class="rn"><a href="https://github.com/interviewstreet/hiring-agent" target="_blank">interviewstreet/hiring-agent<svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></a></div><div class="rd2">用于评估和打分简历的 AI 智能体。</div><div class="rs"><span class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>2.5k</span><span class="forks"><svg viewBox="0 0 24 24"><path d="M6 2C3.24 2 1 4.24 1 7v7c0 2.76 2.24 5 5 5h3v-2H6c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h6c1.66 0 3 1.34 3 3v7c0 1.66-1.34 3-3 3h-3v2h3c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H6z"/></svg>619</span></div><div class="rl"><span class="lt"><span class="ld"></span>Python</span></div></div>
-<div class="repo"><div class="rb rd">5</div><div class="rn"><a href="https://github.com/JCodesMore/ai-website-cloner-template" target="_blank">JCodesMore/ai-website-cloner-template<svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></a></div><div class="rd2">使用 AI 编程智能体通过一行命令克隆任何网站。</div><div class="rs"><span class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>19.7k</span><span class="forks"><svg viewBox="0 0 24 24"><path d="M6 2C3.24 2 1 4.24 1 7v7c0 2.76 2.24 5 5 5h3v-2H6c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h6c1.66 0 3 1.34 3 3v7c0 1.66-1.34 3-3 3h-3v2h3c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H6z"/></svg>2.9k</span></div><div class="rl"><span class="lt"><span class="ld"></span>TypeScript</span></div></div>
-<div class="repo"><div class="rb rd">6</div><div class="rn"><a href="https://github.com/revfactory/harness" target="_blank">revfactory/harness<svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></a></div><div class="rd2">一个元技能（meta-skill），用于设计领域专属的智能体团队、定义专门的智能体，并生成它们所使用的技能。</div><div class="rs"><span class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>7.9k</span><span class="forks"><svg viewBox="0 0 24 24"><path d="M6 2C3.24 2 1 4.24 1 7v7c0 2.76 2.24 5 5 5h3v-2H6c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h6c1.66 0 3 1.34 3 3v7c0 1.66-1.34 3-3 3h-3v2h3c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H6z"/></svg>1.1k</span></div><div class="rl"><span class="lt"><span class="ld"></span>HTML</span></div></div>
-<div class="repo"><div class="rb rd">7</div><div class="rn"><a href="https://github.com/flutter/flutter" target="_blank">flutter/flutter<svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></a></div><div class="rd2">Flutter 让构建漂亮的应用变得简单又快速，覆盖移动端及更多平台。</div><div class="rs"><span class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>177.5k</span><span class="forks"><svg viewBox="0 0 24 24"><path d="M6 2C3.24 2 1 4.24 1 7v7c0 2.76 2.24 5 5 5h3v-2H6c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h6c1.66 0 3 1.34 3 3v7c0 1.66-1.34 3-3 3h-3v2h3c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H6z"/></svg>30.6k</span></div><div class="rl"><span class="lt"><span class="ld"></span>Dart</span></div></div>
-<div class="repo"><div class="rb rd">8</div><div class="rn"><a href="https://github.com/andreknieriem/headunit-revived" target="_blank">andreknieriem/headunit-revived<svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></a></div><div class="rd2">用于显示 Android Auto 的车机应用。</div><div class="rs"><span class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>1.5k</span><span class="forks"><svg viewBox="0 0 24 24"><path d="M6 2C3.24 2 1 4.24 1 7v7c0 2.76 2.24 5 5 5h3v-2H6c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h6c1.66 0 3 1.34 3 3v7c0 1.66-1.34 3-3 3h-3v2h3c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H6z"/></svg>115</span></div><div class="rl"><span class="lt"><span class="ld"></span>Kotlin</span></div></div>
-<div class="repo"><div class="rb rd">9</div><div class="rn"><a href="https://github.com/stablyai/orca" target="_blank">stablyai/orca<svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></a></div><div class="rd2">适用于管理大量并行智能体的 ADE（Agentic Development Environment），可用你自己的订阅运行任意编程智能体，支持桌面和移动端。</div><div class="rs"><span class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>7.1k</span><span class="forks"><svg viewBox="0 0 24 24"><path d="M6 2C3.24 2 1 4.24 1 7v7c0 2.76 2.24 5 5 5h3v-2H6c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h6c1.66 0 3 1.34 3 3v7c0 1.66-1.34 3-3 3h-3v2h3c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H6z"/></svg>508</span></div><div class="rl"><span class="lt"><span class="ld"></span>TypeScript</span></div></div>
-<div class="repo"><div class="rb rd">10</div><div class="rn"><a href="https://github.com/google-labs-code/design.md" target="_blank">google-labs-code/design.md<svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></a></div><div class="rd2">一种向编程智能体描述视觉识别系统的格式规范。DESIGN.md 为智能体提供对设计系统持久、结构化的理解。</div><div class="rs"><span class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>17.7k</span><span class="forks"><svg viewBox="0 0 24 24"><path d="M6 2C3.24 2 1 4.24 1 7v7c0 2.76 2.24 5 5 5h3v-2H6c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h6c1.66 0 3 1.34 3 3v7c0 1.66-1.34 3-3 3h-3v2h3c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H6z"/></svg>1.6k</span></div><div class="rl"><span class="lt"><span class="ld"></span>TypeScript</span></div></div></div></div>
-<div class="col weekly"><div class="st"><svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>每周热门</div><div class="card"><div class="ch"><div class="chL"><svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>每周 Top 10</div><div class="chR">本周</div></div><div class="repo repoTop"><div class="rb r1">1</div><div class="rn"><a href="https://github.com/calesthio/OpenMontage" target="_blank">calesthio/OpenMontage<svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></a></div><div class="rd2">世界上首个开源的智能体视频生产系统，集成 12 条流水线、52 个工具、500+ 智能体技能，把你的 AI 编程助手变成完整的视频制作工作室。</div><div class="rs"><span class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>20.6k</span><span class="forks"><svg viewBox="0 0 24 24"><path d="M6 2C3.24 2 1 4.24 1 7v7c0 2.76 2.24 5 5 5h3v-2H6c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h6c1.66 0 3 1.34 3 3v7c0 1.66-1.34 3-3 3h-3v2h3c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H6z"/></svg>2.3k</span></div><div class="rl"><span class="lt"><span class="ld"></span>Python</span></div></div>
-<div class="repo"><div class="rb r2">2</div><div class="rn"><a href="https://github.com/DeusData/codebase-memory-mcp" target="_blank">DeusData/codebase-memory-mcp<svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></a></div><div class="rd2">高性能代码智能 MCP 服务器，将代码库索引为持久化知识图谱——平均代码库仅需毫秒级。支持 158 种语言，亚毫秒级查询，减少 99% token 消耗。单一静态二进制，零依赖。</div><div class="rs"><span class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>14.4k</span><span class="forks"><svg viewBox="0 0 24 24"><path d="M6 2C3.24 2 1 4.24 1 7v7c0 2.76 2.24 5 5 5h3v-2H6c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h6c1.66 0 3 1.34 3 3v7c0 1.66-1.34 3-3 3h-3v2h3c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H6z"/></svg>1.1k</span></div><div class="rl"><span class="lt"><span class="ld"></span>C</span></div></div>
-<div class="repo"><div class="rb r3">3</div><div class="rn"><a href="https://github.com/google-research/timesfm" target="_blank">google-research/timesfm<svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></a></div><div class="rd2">TimesFM（时序基础模型）是 Google Research 开发的预训练时序基础模型，用于时序预测。</div><div class="rs"><span class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>25.5k</span><span class="forks"><svg viewBox="0 0 24 24"><path d="M6 2C3.24 2 1 4.24 1 7v7c0 2.76 2.24 5 5 5h3v-2H6c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h6c1.66 0 3 1.34 3 3v7c0 1.66-1.34 3-3 3h-3v2h3c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H6z"/></svg>2.4k</span></div><div class="rl"><span class="lt"><span class="ld"></span>Python</span></div></div>
-<div class="repo"><div class="rb rd">4</div><div class="rn"><a href="https://github.com/n0-computer/iroh" target="_blank">n0-computer/iroh<svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></a></div><div class="rd2">IP 地址不可靠，用拨号密钥取代。用 Rust 编写的模块化网络协议栈。</div><div class="rs"><span class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>10.7k</span><span class="forks"><svg viewBox="0 0 24 24"><path d="M6 2C3.24 2 1 4.24 1 7v7c0 2.76 2.24 5 5 5h3v-2H6c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h6c1.66 0 3 1.34 3 3v7c0 1.66-1.34 3-3 3h-3v2h3c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H6z"/></svg>489</span></div><div class="rl"><span class="lt"><span class="ld"></span>Rust</span></div></div>
-<div class="repo"><div class="rb rd">5</div><div class="rn"><a href="https://github.com/koala73/worldmonitor" target="_blank">koala73/worldmonitor<svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></a></div><div class="rd2">实时全球情报仪表盘，集成 AI 驱动的新闻聚合、地缘政治监控和基础设施追踪，提供统一的态势感知界面。</div><div class="rs"><span class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>59.7k</span><span class="forks"><svg viewBox="0 0 24 24"><path d="M6 2C3.24 2 1 4.24 1 7v7c0 2.76 2.24 5 5 5h3v-2H6c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h6c1.66 0 3 1.34 3 3v7c0 1.66-1.34 3-3 3h-3v2h3c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H6z"/></svg>9.3k</span></div><div class="rl"><span class="lt"><span class="ld"></span>TypeScript</span></div></div>
-<div class="repo"><div class="rb rd">6</div><div class="rn"><a href="https://github.com/asgeirtj/system_prompts_leaks" target="_blank">asgeirtj/system_prompts_leaks<svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></a></div><div class="rd2">提取自各厂商的系统提示词合集：Anthropic Claude Fable 5 / Opus 4.8 / Claude Code / Claude Design；OpenAI ChatGPT 5.5 Thinking / GPT 5.5 Instant / Codex；Google Gemini 3.5 Flash / 3.1 Pro / Antigravity；以及 xAI Grok、Cursor、Copilot、VS Code、Perplexity 等，定期更新。</div><div class="rs"><span class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>45.9k</span><span class="forks"><svg viewBox="0 0 24 24"><path d="M6 2C3.24 2 1 4.24 1 7v7c0 2.76 2.24 5 5 5h3v-2H6c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h6c1.66 0 3 1.34 3 3v7c0 1.66-1.34 3-3 3h-3v2h3c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H6z"/></svg>7.5k</span></div><div class="rl"><span class="lt"><span class="ld"></span>JavaScript</span></div></div>
-<div class="repo"><div class="rb rd">7</div><div class="rn"><a href="https://github.com/Panniantong/Agent-Reach" target="_blank">Panniantong/Agent-Reach<svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></a></div><div class="rd2">让你的 AI 智能体拥有看见整个互联网的眼睛。一个 CLI 即可读取与搜索 Twitter、Reddit、YouTube、GitHub、Bilibili、小红书，零 API 费用。</div><div class="rs"><span class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>40.3k</span><span class="forks"><svg viewBox="0 0 24 24"><path d="M6 2C3.24 2 1 4.24 1 7v7c0 2.76 2.24 5 5 5h3v-2H6c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h6c1.66 0 3 1.34 3 3v7c0 1.66-1.34 3-3 3h-3v2h3c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H6z"/></svg>3.2k</span></div><div class="rl"><span class="lt"><span class="ld"></span>Python</span></div></div>
-<div class="repo"><div class="rb rd">8</div><div class="rn"><a href="https://github.com/penpot/penpot" target="_blank">penpot/penpot<svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></a></div><div class="rd2">Penpot：用于设计与代码协作的开源设计工具。</div><div class="rs"><span class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>53.6k</span><span class="forks"><svg viewBox="0 0 24 24"><path d="M6 2C3.24 2 1 4.24 1 7v7c0 2.76 2.24 5 5 5h3v-2H6c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h6c1.66 0 3 1.34 3 3v7c0 1.66-1.34 3-3 3h-3v2h3c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H6z"/></svg>3.4k</span></div><div class="rl"><span class="lt"><span class="ld"></span>Clojure</span></div></div>
-<div class="repo"><div class="rb rd">9</div><div class="rn"><a href="https://github.com/withastro/flue" target="_blank">withastro/flue<svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></a></div><div class="rd2">沙箱智能体框架。</div><div class="rs"><span class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>6.6k</span><span class="forks"><svg viewBox="0 0 24 24"><path d="M6 2C3.24 2 1 4.24 1 7v7c0 2.76 2.24 5 5 5h3v-2H6c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h6c1.66 0 3 1.34 3 3v7c0 1.66-1.34 3-3 3h-3v2h3c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H6z"/></svg>371</span></div><div class="rl"><span class="lt"><span class="ld"></span>TypeScript</span></div></div>
-<div class="repo"><div class="rb rd">10</div><div class="rn"><a href="https://github.com/jamiepine/voicebox" target="_blank">jamiepine/voicebox<svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></a></div><div class="rd2">开源 AI 语音工作室，支持声音克隆、口述创作与语音内容生成。</div><div class="rs"><span class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>34k</span><span class="forks"><svg viewBox="0 0 24 24"><path d="M6 2C3.24 2 1 4.24 1 7v7c0 2.76 2.24 5 5 5h3v-2H6c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h6c1.66 0 3 1.34 3 3v7c0 1.66-1.34 3-3 3h-3v2h3c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H6z"/></svg>4.1k</span></div><div class="rl"><span class="lt"><span class="ld"></span>TypeScript</span></div></div></div></div>
-<div class="col monthly"><div class="st"><svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>每月热门</div><div class="card"><div class="ch"><div class="chL"><svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>每月 Top 10</div><div class="chR">本月</div></div><div class="repo repoTop"><div class="rb r1">1</div><div class="rn"><a href="https://github.com/harry0703/MoneyPrinterTurbo" target="_blank">harry0703/MoneyPrinterTurbo<svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></a></div><div class="rd2">利用 AI 大模型一键生成高清短视频。</div><div class="rs"><span class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>92.4k</span><span class="forks"><svg viewBox="0 0 24 24"><path d="M6 2C3.24 2 1 4.24 1 7v7c0 2.76 2.24 5 5 5h3v-2H6c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h6c1.66 0 3 1.34 3 3v7c0 1.66-1.34 3-3 3h-3v2h3c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H6z"/></svg>13.3k</span></div><div class="rl"><span class="lt"><span class="ld"></span>Python</span></div></div>
-<div class="repo"><div class="rb r2">2</div><div class="rn"><a href="https://github.com/apple/container" target="_blank">apple/container<svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></a></div><div class="rd2">在 Mac 上使用轻量级虚拟机创建和运行 Linux 容器的工具，使用 Swift 编写，针对 Apple silicon 优化。</div><div class="rs"><span class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>42.6k</span><span class="forks"><svg viewBox="0 0 24 24"><path d="M6 2C3.24 2 1 4.24 1 7v7c0 2.76 2.24 5 5 5h3v-2H6c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h6c1.66 0 3 1.34 3 3v7c0 1.66-1.34 3-3 3h-3v2h3c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H6z"/></svg>1.3k</span></div><div class="rl"><span class="lt"><span class="ld"></span>Swift</span></div></div>
-<div class="repo"><div class="rb r3">3</div><div class="rn"><a href="https://github.com/DeusData/codebase-memory-mcp" target="_blank">DeusData/codebase-memory-mcp<svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></a></div><div class="rd2">高性能代码智能 MCP 服务器，将代码库索引为持久化知识图谱——平均代码库仅需毫秒级。支持 158 种语言，亚毫秒级查询，减少 99% token 消耗。单一静态二进制，零依赖。</div><div class="rs"><span class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>14.4k</span><span class="forks"><svg viewBox="0 0 24 24"><path d="M6 2C3.24 2 1 4.24 1 7v7c0 2.76 2.24 5 5 5h3v-2H6c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h6c1.66 0 3 1.34 3 3v7c0 1.66-1.34 3-3 3h-3v2h3c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H6z"/></svg>1.1k</span></div><div class="rl"><span class="lt"><span class="ld"></span>C</span></div></div>
-<div class="repo"><div class="rb rd">4</div><div class="rn"><a href="https://github.com/mvanhorn/last30days-skill" target="_blank">mvanhorn/last30days-skill<svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></a></div><div class="rd2">智能体技能，可跨 Reddit、X、YouTube、Hacker News、Polymarket 和全网研究任意话题，并合成有依据的总结。</div><div class="rs"><span class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>46.5k</span><span class="forks"><svg viewBox="0 0 24 24"><path d="M6 2C3.24 2 1 4.24 1 7v7c0 2.76 2.24 5 5 5h3v-2H6c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h6c1.66 0 3 1.34 3 3v7c0 1.66-1.34 3-3 3h-3v2h3c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H6z"/></svg>3.9k</span></div><div class="rl"><span class="lt"><span class="ld"></span>Python</span></div></div>
-<div class="repo"><div class="rb rd">5</div><div class="rn"><a href="https://github.com/microsoft/markitdown" target="_blank">microsoft/markitdown<svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></a></div><div class="rd2">用于将文件和 Office 文档转换为 Markdown 的 Python 工具。</div><div class="rs"><span class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>158.9k</span><span class="forks"><svg viewBox="0 0 24 24"><path d="M6 2C3.24 2 1 4.24 1 7v7c0 2.76 2.24 5 5 5h3v-2H6c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h6c1.66 0 3 1.34 3 3v7c0 1.66-1.34 3-3 3h-3v2h3c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H6z"/></svg>11.1k</span></div><div class="rl"><span class="lt"><span class="ld"></span>Python</span></div></div>
-<div class="repo"><div class="rb rd">6</div><div class="rn"><a href="https://github.com/iptv-org/iptv" target="_blank">iptv-org/iptv<svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></a></div><div class="rd2">收录全球可公开获取的 IPTV 频道合集。</div><div class="rs"><span class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>128.4k</span><span class="forks"><svg viewBox="0 0 24 24"><path d="M6 2C3.24 2 1 4.24 1 7v7c0 2.76 2.24 5 5 5h3v-2H6c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h6c1.66 0 3 1.34 3 3v7c0 1.66-1.34 3-3 3h-3v2h3c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H6z"/></svg>7.1k</span></div><div class="rl"><span class="lt"><span class="ld"></span>TypeScript</span></div></div>
-<div class="repo"><div class="rb rd">7</div><div class="rn"><a href="https://github.com/Panniantong/Agent-Reach" target="_blank">Panniantong/Agent-Reach<svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></a></div><div class="rd2">让你的 AI 智能体拥有看见整个互联网的眼睛。一个 CLI 即可读取与搜索 Twitter、Reddit、YouTube、GitHub、Bilibili、小红书，零 API 费用。</div><div class="rs"><span class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>40.3k</span><span class="forks"><svg viewBox="0 0 24 24"><path d="M6 2C3.24 2 1 4.24 1 7v7c0 2.76 2.24 5 5 5h3v-2H6c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h6c1.66 0 3 1.34 3 3v7c0 1.66-1.34 3-3 3h-3v2h3c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H6z"/></svg>3.2k</span></div><div class="rl"><span class="lt"><span class="ld"></span>Python</span></div></div>
-<div class="repo"><div class="rb rd">8</div><div class="rn"><a href="https://github.com/microsoft/Webwright" target="_blank">microsoft/Webwright<svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></a></div><div class="rd2">简洁的 SWE 风格浏览器智能体框架，在长链路网页任务上取得 SOTA 结果。</div><div class="rs"><span class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>5.6k</span><span class="forks"><svg viewBox="0 0 24 24"><path d="M6 2C3.24 2 1 4.24 1 7v7c0 2.76 2.24 5 5 5h3v-2H6c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h6c1.66 0 3 1.34 3 3v7c0 1.66-1.34 3-3 3h-3v2h3c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H6z"/></svg>356</span></div><div class="rl"><span class="lt"><span class="ld"></span>Python</span></div></div>
-<div class="repo"><div class="rb rd">9</div><div class="rn"><a href="https://github.com/esengine/DeepSeek-Reasonix" target="_blank">esengine/DeepSeek-Reasonix<svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></a></div><div class="rd2">为终端打造的原生 DeepSeek AI 编程智能体，围绕前缀缓存稳定性设计——可长期后台运行。</div><div class="rs"><span class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>24.5k</span><span class="forks"><svg viewBox="0 0 24 24"><path d="M6 2C3.24 2 1 4.24 1 7v7c0 2.76 2.24 5 5 5h3v-2H6c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h6c1.66 0 3 1.34 3 3v7c0 1.66-1.34 3-3 3h-3v2h3c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H6z"/></svg>1.5k</span></div><div class="rl"><span class="lt"><span class="ld"></span>Go</span></div></div>
-<div class="repo"><div class="rb rd">10</div><div class="rn"><a href="https://github.com/Egonex-AI/Understand-Anything" target="_blank">Egonex-AI/Understand-Anything<svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></a></div><div class="rd2">教学型图谱优于展示型图谱。把任意代码转化为可探索、可搜索、可问答的交互式知识图谱。兼容 Claude Code、Codex、Cursor、Copilot、Gemini CLI 等。</div><div class="rs"><span class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>67.7k</span><span class="forks"><svg viewBox="0 0 24 24"><path d="M6 2C3.24 2 1 4.24 1 7v7c0 2.76 2.24 5 5 5h3v-2H6c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h6c1.66 0 3 1.34 3 3v7c0 1.66-1.34 3-3 3h-3v2h3c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H6z"/></svg>5.6k</span></div><div class="rl"><span class="lt"><span class="ld"></span>TypeScript</span></div></div></div></div>
-</div>
+
+<main class="page">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-badge"><span class="dot"></span>数据实时更新中</div>
+    <h1>发现 <span>GitHub</span> 热门趋势</h1>
+    <p class="hero-sub">追踪每日、每周、每月的 GitHub 热门项目，洞察开源社区最新动态。</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-val" data-count="26">0</div><div class="hero-stat-label">跟踪项目</div></div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat"><div class="hero-stat-val" data-count="8">0</div><div class="hero-stat-label">编程语言</div></div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat"><div class="hero-stat-val" data-count="24">0</div><div class="hero-stat-label">小时更新</div></div>
+    </div>
+  </section>
+
+  <!-- Tabs -->
+  <div class="tabs-wrap">
+    <div class="tabs">
+      <button class="tab active" data-panel="daily"><i class="ti ti-sun"></i><span>每日热门</span></button>
+      <button class="tab" data-panel="weekly"><i class="ti ti-calendar-stats"></i><span>每周热门</span></button>
+      <button class="tab" data-panel="monthly"><i class="ti ti-moon-stars"></i><span>每月热门</span></button>
+    </div>
+    <span class="tab-meta">每 24 小时自动更新</span>
+  </div>
+
+  <!-- Panels -->
+  <div class="panel-wrap">
+    <!-- Daily -->
+    <div class="panel active" id="daily">
+      <div class="featured" id="daily-featured"></div>
+      <div class="repo-list" id="daily-list"></div>
+    </div>
+    <!-- Weekly -->
+    <div class="panel" id="weekly">
+      <div class="featured" id="weekly-featured"></div>
+      <div class="repo-list" id="weekly-list"></div>
+    </div>
+    <!-- Monthly -->
+    <div class="panel" id="monthly">
+      <div class="featured" id="monthly-featured"></div>
+      <div class="repo-list" id="monthly-list"></div>
+    </div>
+  </div>
+
+  <!-- Language Marquee -->
+  <div class="lang-marquee" aria-hidden="true">
+    <div class="marquee-track" id="marquee-track"></div>
+  </div>
 </main>
+
 <footer class="footer">
-  <a href="https://github.com/trending" target="_blank">查看更多 GitHub 趋势</a>
-  <div class="footer-brand">由 IKUN 提供技术支持 | 每日 9:00 自动更新</div>
+  <div class="page">
+    <a href="https://github.com/trending" target="_blank" rel="noopener">前往 GitHub Trending 查看更多</a>
+    <div class="footer-brand">由 IKUN 提供技术支持 | 每日 09:00 自动更新</div>
+  </div>
 </footer>
+
+<script>
+// ===== DATA =====
+const LANG_COLORS={
+  'Haskell':'#5e5086','HTML':'#e34c26','Python':'#3572A5','C':'#555555',
+  'Swift':'#F05138','TypeScript':'#3178c6','Go':'#00ADD8','JavaScript':'#f1e05a',
+  'Rust':'#dea584','Java':'#b07219','C++':'#f34b7d','Ruby':'#701516',
+  'Shell':'#89e051','Kotlin':'#A97BFF','Dart':'#00B4AB','PHP':'#4F5D95'
+};
+const DATA={
+  daily:{
+    featured:[
+      {rank:1,slug:"simplex-chat/simplex-chat",desc:"首个没有任何用户标识符的消息网络，在协议层面实现 100% 隐私保护，支持 iOS、Android 和桌面端。",stars:"15.6k",forks:"901",lang:"Haskell"},
+      {rank:2,slug:"ripienaar/free-for-dev",desc:"面向运维和基础架构开发者的清单，整理了提供免费额度的 SaaS / PaaS / IaaS 产品。",stars:"126k",forks:"13.2k",lang:"HTML"},
+      {rank:3,slug:"commaai/openpilot",desc:"开源的机器人操作系统（机器人版的 Linux），已为 300 多款车型升级驾驶辅助能力。",stars:"62.6k",forks:"11.1k",lang:"Python"}
+    ],
+    list:[
+      {rank:4,slug:"xbtlin/ai-berkshire",desc:"AI 时代的伯克希尔：基于 Claude Code / Codex 的价值投资研究框架，融合巴菲特、芒格、段永平、李录方法论。",stars:"6k",forks:"792",lang:"Python"},
+      {rank:5,slug:"Robbyant/lingbot-map",desc:"前馈式 3D 基础模型，用于从流式数据中实时重建三维场景。",stars:"8.4k",forks:"815",lang:"Python"},
+      {rank:6,slug:"DeusData/codebase-memory-mcp",desc:"高性能代码智能 MCP 服务器，将代码库索引为持久知识图谱——平均代码库仅需毫秒级。支持 158 种语言，亚毫秒级查询，减少 99% token 消耗。",stars:"20.5k",forks:"1.5k",lang:"C"},
+      {rank:7,slug:"cupy/cupy",desc:"基于 CUDA 的 NumPy / SciPy 替代品，为 GPU 提供完整数组计算支持。",stars:"11.6k",forks:"1.1k",lang:"Python"},
+      {rank:8,slug:"altic-dev/FluidVoice",desc:"速度最快的 macOS 离线听写应用，纯本地完成语音转文字。",stars:"4k",forks:"247",lang:"Swift"},
+      {rank:9,slug:"opendatalab/MinerU",desc:"将 PDF、Office 文档等复杂文档转换为 LLM 可直接使用的 Markdown 或 JSON。",stars:"72k",forks:"6k",lang:"Python"},
+      {rank:10,slug:"HKUDS/Vibe-Trading",desc:"Vibe-Trading：你的私人交易 Agent，基于 AI 的智能交易助手。",stars:"14.7k",forks:"2.7k",lang:"Python"}
+    ]
+  },
+  weekly:{
+    featured:[
+      {rank:1,slug:"calesthio/OpenMontage",desc:"世界首个开源的智能体视频制作系统：12 条流水线、52 个工具、500 多个 Agent 技能。",stars:"27.7k",forks:"3.1k",lang:"Python"},
+      {rank:2,slug:"DeusData/codebase-memory-mcp",desc:"高性能代码智能 MCP 服务器，将代码库索引为持久知识图谱——平均代码库仅需毫秒级。支持 158 种语言，亚毫秒级查询，减少 99% token 消耗。",stars:"20.5k",forks:"1.5k",lang:"C"},
+      {rank:3,slug:"kunchenguid/no-mistakes",desc:"git push no-mistakes，让你的 Git 推送永不出错。",stars:"4.2k",forks:"233",lang:"Go"}
+    ],
+    list:[
+      {rank:4,slug:"palmier-io/palmier-pro",desc:"为 AI 而生的 macOS 视频编辑器，智能剪辑一键出片。",stars:"9.4k",forks:"662",lang:"Swift"},
+      {rank:5,slug:"google-labs-code/design.md",desc:"用于向编程 Agent 描述视觉设计规范的格式标准，让 Agent 持久理解设计系统。",stars:"23k",forks:"1.8k",lang:"TypeScript"},
+      {rank:6,slug:"JCodesMore/ai-website-cloner-template",desc:"用一行命令，借助 AI 编程 Agent 克隆任意网站。",stars:"23.2k",forks:"3.3k",lang:"TypeScript"},
+      {rank:7,slug:"simplex-chat/simplex-chat",desc:"首个没有任何用户标识符的消息网络，在协议层面实现 100% 隐私保护，支持 iOS、Android 和桌面端。",stars:"15.6k",forks:"901",lang:"Haskell"},
+      {rank:8,slug:"interviewstreet/hiring-agent",desc:"用于评估与打分简历的 AI Agent，自动化招聘筛选。",stars:"3.4k",forks:"715",lang:"Python"},
+      {rank:9,slug:"ZhuLinsen/daily_stock_analysis",desc:"由 LLM 驱动的多市场股票智能分析系统，汇聚多源行情、实时新闻与决策看板。",stars:"51.4k",forks:"44.7k",lang:"Python"},
+      {rank:10,slug:"stablyai/orca",desc:"用于调度并行 Agent 集群的 ADE（Agentic Development Environment），可用自己的订阅运行任意 coding agent。",stars:"8.8k",forks:"608",lang:"TypeScript"}
+    ]
+  },
+  monthly:{
+    featured:[
+      {rank:1,slug:"apple/container",desc:"在 Mac 上通过轻量级虚拟机创建并运行 Linux 容器的工具，使用 Swift 编写，针对 Apple silicon 优化。",stars:"44.5k",forks:"1.3k",lang:"Swift"},
+      {rank:2,slug:"DeusData/codebase-memory-mcp",desc:"高性能代码智能 MCP 服务器，将代码库索引为持久知识图谱——平均代码库仅需毫秒级。支持 158 种语言，亚毫秒级查询，减少 99% token 消耗。",stars:"20.5k",forks:"1.5k",lang:"C"},
+      {rank:3,slug:"calesthio/OpenMontage",desc:"世界首个开源的智能体视频制作系统：12 条流水线、52 个工具、500 多个 Agent 技能。",stars:"27.7k",forks:"3.1k",lang:"Python"}
+    ],
+    list:[
+      {rank:4,slug:"Panniantong/Agent-Reach",desc:"让你的 AI Agent 看见整个互联网：通过 CLI 读取和搜索 Twitter、Reddit、YouTube、GitHub 等平台。",stars:"45k",forks:"3.6k",lang:"Python"},
+      {rank:5,slug:"mvanhorn/last30days-skill",desc:"AI Agent 技能：跨 Reddit、X、YouTube、Hacker News 等平台研究任意主题并汇总。",stars:"47.5k",forks:"3.9k",lang:"Python"},
+      {rank:6,slug:"iptv-org/iptv",desc:"汇集了来自全球的、可公开访问的 IPTV 频道列表。",stars:"129.2k",forks:"7.1k",lang:"TypeScript"},
+      {rank:7,slug:"harry0703/MoneyPrinterTurbo",desc:"利用 AI 大模型，一键生成高清短视频。",stars:"94k",forks:"13.6k",lang:"Python"},
+      {rank:8,slug:"lfnovo/open-notebook",desc:"开源版 NotebookLM 实现，比官方更灵活、功能更丰富。",stars:"33.9k",forks:"3.8k",lang:"TypeScript"},
+      {rank:9,slug:"phuryn/pm-skills",desc:"PM 技能市场：100 多个 Agent 化技能、命令与插件，覆盖产品全流程。",stars:"21.6k",forks:"2.2k",lang:''},
+      {rank:10,slug:"Leonxlnx/taste-skill",desc:"Taste-Skill：赋予你的 AI 良好品味，阻止它生成无聊、套路化的内容。",stars:"52.8k",forks:"3.6k",lang:"JavaScript"}
+    ]
+  }
+};
+
+// ===== RENDER =====
+function renderFeatured(panelId){
+  const container=document.getElementById(panelId+'-featured');
+  if(container.children.length>0)return;
+  const items=DATA[panelId].featured;
+  items.forEach(r=>{
+    const c=document.createElement('div');
+    c.className='feat-card reveal';
+    const lc=LANG_COLORS[r.lang]||'#71717a';
+    c.innerHTML=`
+      <div class="shine"></div>
+      <div class="feat-rank rank-${r.rank}">${r.rank}</div>
+      <div class="feat-name"><a href="https://github.com/${r.slug}" target="_blank" rel="noopener"><i class="ti ti-external-link"></i>${r.slug}</a></div>
+      <div class="feat-desc">${r.desc}</div>
+      <div class="feat-meta">
+        <span class="feat-stars"><i class="ti ti-star-filled"></i>${r.stars}</span>
+        <span class="feat-forks"><i class="ti ti-git-fork"></i>${r.forks}</span>
+        <span class="feat-lang"><span class="lang-dot" style="background:${lc}"></span>${r.lang}</span>
+      </div>`;
+    container.appendChild(c);
+  });
+  initTiltCards(container);
+  revealItems(container.querySelectorAll('.feat-card'));
+}
+
+function renderList(panelId){
+  const container=document.getElementById(panelId+'-list');
+  if(container.children.length>0)return;
+  const items=DATA[panelId].list;
+  items.forEach((r,i)=>{
+    const row=document.createElement('div');
+    row.className='repo-row reveal';
+    row.style.setProperty('--idx',i);
+    const lc=LANG_COLORS[r.lang]||'#71717a';
+    row.innerHTML=`
+      <div class="repo-rank">${r.rank}</div>
+      <div class="repo-info">
+        <div class="repo-name"><a href="https://github.com/${r.slug}" target="_blank" rel="noopener"><i class="ti ti-external-link"></i>${r.slug}</a></div>
+        <div class="repo-desc">${r.desc}</div>
+      </div>
+      <div class="repo-right">
+        <span class="repo-stars"><i class="ti ti-star-filled"></i>${r.stars}</span>
+        <span class="repo-forks"><i class="ti ti-git-fork"></i>${r.forks}</span>
+        ${r.lang?`<span class="repo-lang"><span class="lang-dot" style="background:${lc}"></span>${r.lang}</span>`:''}
+      </div>`;
+    container.appendChild(row);
+  });
+  revealItems(container.querySelectorAll('.repo-row'));
+}
+
+// ===== 3D TILT =====
+function initTiltCards(container){
+  container.querySelectorAll('.feat-card').forEach(card=>{
+    card.addEventListener('mousemove',e=>{
+      const r=card.getBoundingClientRect();
+      const x=(e.clientX-r.left)/r.width;
+      const y=(e.clientY-r.top)/r.height;
+      const rotX=(y-0.5)*-8;
+      const rotY=(x-0.5)*8;
+      card.style.transform=`perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(1.01)`;
+      card.style.setProperty('--mx',(x*100)+'%');
+      card.style.setProperty('--my',(y*100)+'%');
+    });
+    card.addEventListener('mouseleave',()=>{
+      card.style.transform='perspective(800px) rotateX(0) rotateY(0) scale(1)';
+    });
+  });
+}
+
+// ===== SPOTLIGHT ON LIST ROWS =====
+document.addEventListener('mousemove',e=>{
+  document.querySelectorAll('.repo-row').forEach(row=>{
+    const r=row.getBoundingClientRect();
+    row.style.setProperty('--row-x',(e.clientX-r.left)+'px');
+    row.style.setProperty('--row-y',(e.clientY-r.top)+'px');
+  });
+});
+
+// ===== GSAP REVEAL =====
+gsap.registerPlugin(ScrollTrigger);
+function revealItems(els){
+  gsap.fromTo(els,
+    {opacity:0,y:24},
+    {opacity:1,y:0,duration:0.6,stagger:0.06,ease:'power3.out',
+     scrollTrigger:{trigger:els[0],start:'top 90%',once:true}}
+  );
+}
+
+// Hero animations
+window.addEventListener('DOMContentLoaded',()=>{
+  // Counter animation
+  document.querySelectorAll('[data-count]').forEach(el=>{
+    const target=parseInt(el.dataset.count);
+    gsap.to({val:0},{
+      val:target,duration:1.5,ease:'power2.out',delay:0.3,
+      onUpdate:function(){el.textContent=Math.round(this.targets()[0].val)}
+    });
+  });
+
+  // Hero stagger
+  gsap.from('.hero-badge',{opacity:0,y:20,duration:0.7,ease:'power3.out',delay:0.1});
+  gsap.from('.hero h1',{opacity:0,y:30,duration:0.8,ease:'power3.out',delay:0.2});
+  gsap.from('.hero-sub',{opacity:0,y:20,duration:0.7,ease:'power3.out',delay:0.35});
+  gsap.from('.hero-stats',{opacity:0,y:20,duration:0.7,ease:'power3.out',delay:0.5});
+  gsap.from('.tabs-wrap',{opacity:0,y:15,duration:0.6,ease:'power3.out',delay:0.6});
+
+  // Blob float
+  gsap.to('.blob-1',{x:40,y:30,duration:8,ease:'sine.inOut',yoyo:true,repeat:-1});
+  gsap.to('.blob-2',{x:-30,y:-40,duration:10,ease:'sine.inOut',yoyo:true,repeat:-1});
+  gsap.to('.blob-3',{x:50,y:-20,duration:9,ease:'sine.inOut',yoyo:true,repeat:-1});
+  gsap.to('.blob-4',{x:-40,y:30,duration:11,ease:'sine.inOut',yoyo:true,repeat:-1});
+
+  // Initial render
+  renderFeatured('daily');
+  renderList('daily');
+});
+
+// ===== TAB SWITCH =====
+let currentPanel='daily';
+document.querySelectorAll('.tab').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const pid=btn.dataset.panel;
+    if(pid===currentPanel)return;
+    const oldPanel=document.getElementById(currentPanel);
+    const newPanel=document.getElementById(pid);
+    // Fade out
+    gsap.to(oldPanel,{opacity:0,duration:0.2,ease:'power2.in',onComplete:()=>{
+      oldPanel.classList.remove('active');
+      newPanel.classList.add('active');
+      gsap.fromTo(newPanel,{opacity:0},{opacity:1,duration:0.3,ease:'power2.out'});
+      currentPanel=pid;
+      renderFeatured(pid);
+      renderList(pid);
+    }});
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+
+// ===== LANG MARQUEE =====
+(function(){
+  const langs=Object.keys(LANG_COLORS);
+  const track=document.getElementById('marquee-track');
+  // Duplicate for seamless loop
+  const content=[...langs,...langs].map(l=>{
+    const c=LANG_COLORS[l];
+    return `<span class="lang-tag"><span class="lang-dot" style="background:${c}"></span>${l}</span>`;
+  }).join('');
+  track.innerHTML=content;
+})();
+</script>
 </body>
 </html>
