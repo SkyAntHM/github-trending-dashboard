@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GitHub Trending - 2026-07-06</title>
+<title>GitHub Trending - 2026-07-07</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-sans/style.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-mono/style.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css">
@@ -195,12 +195,12 @@ button{font-family:inherit;border:none;cursor:pointer;background:none}
       <div class="brand-icon"><i class="ti ti-brand-github"></i></div>
       <div>
         <div class="brand-title">GitHub Trending</div>
-        <div class="brand-date">2026-07-06</div>
+        <div class="brand-date">2026-07-07</div>
       </div>
     </div>
     <div class="header-right">
-      <div class="stat-pill"><i class="ti ti-flame"></i>24 热门项目</div>
-      <div class="stat-pill"><i class="ti ti-code"></i>7 种语言</div>
+      <div class="stat-pill"><i class="ti ti-flame"></i>26 热门项目</div>
+      <div class="stat-pill"><i class="ti ti-code"></i>9 种语言</div>
     </div>
   </div>
 </header>
@@ -212,9 +212,9 @@ button{font-family:inherit;border:none;cursor:pointer;background:none}
     <h1>发现 <span>GitHub</span> 热门趋势</h1>
     <p class="hero-sub">追踪每日、每周、每月的 GitHub 热门项目，洞察开源社区最新动态。</p>
     <div class="hero-stats">
-      <div class="hero-stat"><div class="hero-stat-val" data-count="24">0</div><div class="hero-stat-label">跟踪项目</div></div>
+      <div class="hero-stat"><div class="hero-stat-val" data-count="26">0</div><div class="hero-stat-label">跟踪项目</div></div>
       <div class="hero-stat-divider"></div>
-      <div class="hero-stat"><div class="hero-stat-val" data-count="7">0</div><div class="hero-stat-label">编程语言</div></div>
+      <div class="hero-stat"><div class="hero-stat-val" data-count="9">0</div><div class="hero-stat-label">编程语言</div></div>
       <div class="hero-stat-divider"></div>
       <div class="hero-stat"><div class="hero-stat-val" data-count="24">0</div><div class="hero-stat-label">小时更新</div></div>
     </div>
@@ -273,50 +273,50 @@ const LANG_COLORS={
 const DATA={
   daily:{
     featured:[
-      {rank:1,slug:"Zackriya-Solutions/meetily",desc:"主打隐私优先的 AI 会议助手,基于 Rust,使用 Parakeet/Whisper 实现比传统方案快 4 倍的实时转录,支持说话人区分,并通过 Ollama 生成会议摘要。",stars:"17k",forks:"1.8k",lang:"Rust"},
-      {rank:2,slug:"openai/codex-plugin-cc",desc:"在 Claude Code 中调用 Codex 来评审代码或委派任务。",stars:"25.5k",forks:"1.5k",lang:"JavaScript"},
-      {rank:3,slug:"asgeirtj/system_prompts_leaks",desc:"汇总从各家大模型产品中提取出的系统提示词,包括 Anthropic Claude 系列、OpenAI ChatGPT/Codex、Google 等。",stars:"50k",forks:"8.2k",lang:"JavaScript"}
+      {rank:1,slug:"asgeirtj/system_prompts_leaks",desc:"汇总各厂商 LLM 的系统提示词泄露合集，覆盖 Anthropic Claude 全系、OpenAI ChatGPT/Codex、Google Gemini 系列。",stars:"51.5k",forks:"8.4k",lang:"JavaScript"},
+      {rank:2,slug:"addyosmani/agent-skills",desc:"面向 AI 编程 agent 的工程级最佳实践技能集合。",stars:"70.8k",forks:"7.7k",lang:"Shell"},
+      {rank:3,slug:"Zackriya-Solutions/meetily",desc:"隐私优先的本地 AI 会议助手，基于 Rust 构建，集成 Parakeet/Whisper 实时转写与 Ollama 摘要，4 倍速处理，100% 本地运行无需联网。",stars:"19.3k",forks:"2k",lang:"Rust"}
     ],
     list:[
-      {rank:4,slug:"Leonxlnx/taste-skill",desc:"为 AI 注入审美与品味,避免输出千篇一律、毫无个性的平庸内容。",stars:"57.5k",forks:"3.9k",lang:"JavaScript"},
-      {rank:5,slug:"alirezarezvani/claude-skills",desc:"为 Claude Code、Codex 等 AI 编程工具提供 337 个 skills 与插件,涵盖 30+ 智能体、70+ 自定义命令和 330+ skills,支持按需定制。",stars:"20.6k",forks:"2.8k",lang:"Python"},
-      {rank:6,slug:"rommapp/romm",desc:"界面美观、功能强大的自托管 ROM 游戏管理与运行平台。",stars:"10.5k",forks:"504",lang:"Python"},
-      {rank:7,slug:"ogulcancelik/herdr",desc:"运行在终端中的 agent 多路复用器。",stars:"12.1k",forks:"702",lang:"Rust"},
-      {rank:8,slug:"alibaba/page-agent",desc:"用 JavaScript 实现的页面级 GUI agent,可通过自然语言操控网页界面。",stars:"23.9k",forks:"2.1k",lang:"TypeScript"},
-      {rank:9,slug:"harvard-edge/cs249r_book",desc:"哈佛大学开设的《机器学习系统》教材开源仓库,系统讲解 ML 系统的设计与实现。",stars:"26.8k",forks:"3.2k",lang:"Python"},
-      {rank:10,slug:"usestrix/strix",desc:"开源的 AI 渗透测试工具,自动发现并修复应用中的安全漏洞。",stars:"37.1k",forks:"3.8k",lang:"Python"}
+      {rank:4,slug:"ruvnet/RuView",desc:"π RuView 利用普通 WiFi 信号实现实时空间感知、生命体征监测与在场检测，全程无任何视频画面。",stars:"77.5k",forks:"10.4k",lang:"Rust"},
+      {rank:5,slug:"Leonxlnx/taste-skill",desc:"Taste-Skill — 让 AI 摆脱千篇一律的平庸输出，具备真正的好品味。",stars:"58.9k",forks:"4k",lang:"JavaScript"},
+      {rank:6,slug:"alirezarezvani/claude-skills",desc:"为 Claude Code、Codex、Gemini CLI、Cursor 等 8+ 编程 agent 提供的 345 个技能、插件与 30+ 子 agent 集合。",stars:"21.1k",forks:"2.8k",lang:"Python"},
+      {rank:7,slug:"openai/codex-plugin-cc",desc:"在 Claude Code 中调用 Codex 完成代码审查与任务委派。",stars:"26.3k",forks:"1.6k",lang:"JavaScript"},
+      {rank:8,slug:"mvanhorn/last30days-skill",desc:"AI agent 技能，自动抓取 Reddit、X、YouTube、Hacker News、Polymarket 等平台近 30 天内容并生成汇总。",stars:"49.7k",forks:"4.1k",lang:"Python"},
+      {rank:9,slug:"ogulcancelik/herdr",desc:"运行在终端里的 agent 多路复用器，可同时调度多个 AI agent。",stars:"12.9k",forks:"746",lang:"Rust"},
+      {rank:10,slug:"bradautomates/claude-video",desc:"为 Claude 增加视频理解能力，/watch 命令自动下载视频、抽帧、转录并交给 Claude 分析。",stars:"4.2k",forks:"602",lang:"Python"}
     ]
   },
   weekly:{
     featured:[
-      {rank:1,slug:"usestrix/strix",desc:"Open-source AI penetration testing tool to find and fix your app’s vulnerabilities.",stars:"37.1k",forks:"3.8k",lang:"Python"},
-      {rank:2,slug:"xbtlin/ai-berkshire",desc:"AI 时代的伯克希尔:基于 Claude Code / Codex 的价值投资研究框架,融合巴菲特、芒格、段永平、李录四大师方法论,支持多 Agent 并行研究。",stars:"10.3k",forks:"1.3k",lang:"Python"},
-      {rank:3,slug:"diegosouzapw/OmniRoute",desc:"永不中断的 AI 编程网关:统一接入 231+ 模型 provider(含 50+ 免费),让 Claude Code、Codex、Cursor 等工具自由切换至 Claude/GPT/Gemini 等模型。",stars:"11.9k",forks:"1.7k",lang:"TypeScript"}
+      {rank:1,slug:"usestrix/strix",desc:"开源 AI 渗透测试工具，自动发现并修复应用安全漏洞。",stars:"38k",forks:"3.9k",lang:"Python"},
+      {rank:2,slug:"hasaneyldrm/exercises-dataset",desc:"包含 433 个健身动作的综合数据集，每条记录涵盖名称、分类、目标肌群、器械、动作说明与示范视频。",stars:"10.2k",forks:"1.2k",lang:"HTML"},
+      {rank:3,slug:"diegosouzapw/OmniRoute",desc:"免费 AI 网关，统一接入 231+ 模型厂商（50+ 免费），配合 RTK + Caveman 压缩节省 15% 以上 token。",stars:"12.6k",forks:"1.8k",lang:"TypeScript"}
     ],
     list:[
-      {rank:4,slug:"simplex-chat/simplex-chat",desc:"全球首个无需任何用户标识符的即时通信网络,从设计上实现 100% 隐私保护,提供 iOS、Android 和桌面端应用。",stars:"17.9k",forks:"1.1k",lang:"Haskell"},
-      {rank:5,slug:"Robbyant/lingbot-map",desc:"基于前馈结构的 3D 基础模型,可从流式数据中实时重建三维场景。",stars:"9.9k",forks:"981",lang:"Python"},
-      {rank:6,slug:"ogulcancelik/herdr",desc:"agent multiplexer that lives in your terminal.",stars:"12.1k",forks:"702",lang:"Rust"},
-      {rank:7,slug:"logto-io/logto",desc:"面向 SaaS 与 AI 应用的身份认证与授权基础设施,基于 OIDC 和 OAuth 2.1 构建,支持多租户、SSO 和 RBAC。",stars:"13.8k",forks:"947",lang:"TypeScript"},
-      {rank:8,slug:"Zackriya-Solutions/meetily",desc:"Privacy first, AI meeting assistant with 4x faster Parakeet/Whisper live transcription, speaker diarization, and Ollama summarization built on Rust. 100% local processing. no cloud required. Meetily (Meetly Ai - <a href=\"https://meetily.ai\" class=\"Link--inTextBlock\" rel=\"nofollow\">https://meetily.ai</a>) is the #1 Self-hosted, Open-source Ai meeting note taker for macOS &amp; Windows.",stars:"17k",forks:"1.8k",lang:"Rust"},
-      {rank:9,slug:"browser-use/video-use",desc:"用编程 agent 直接编辑视频。",stars:"15k",forks:"1.8k",lang:"Python"},
-      {rank:10,slug:"alibaba/page-agent",desc:"JavaScript in-page GUI agent. Control web interfaces with natural language.",stars:"23.9k",forks:"2.1k",lang:"TypeScript"}
+      {rank:4,slug:"Zackriya-Solutions/meetily",desc:"隐私优先的本地 AI 会议助手，基于 Rust 构建，集成 Parakeet/Whisper 实时转写与 Ollama 摘要，4 倍速处理，100% 本地运行无需联网。",stars:"19.3k",forks:"2k",lang:"Rust"},
+      {rank:5,slug:"altic-dev/FluidVoice",desc:"macOS 上最快且唯一支持本地 STT 与自训练增强模型的听写应用，定位为本地版 Wispr Flow 替代品。",stars:"6.4k",forks:"400",lang:"Swift"},
+      {rank:6,slug:"ogulcancelik/herdr",desc:"运行在终端里的 agent 多路复用器，可同时调度多个 AI agent。",stars:"12.9k",forks:"746",lang:"Rust"},
+      {rank:7,slug:"xbtlin/ai-berkshire",desc:"AI 时代的伯克希尔：基于 Claude Code / Codex 的价值投资研究框架，融合巴菲特、芒格、段永平、李录四大师方法论的多 agent 协作系统。",stars:"11.1k",forks:"1.4k",lang:"Python"},
+      {rank:8,slug:"alibaba/page-agent",desc:"页面级 JS GUI agent，通过自然语言指令操控网页界面。",stars:"24.6k",forks:"2.1k",lang:"TypeScript"},
+      {rank:9,slug:"browser-use/video-use",desc:"用编程 agent 完成视频剪辑。",stars:"15.4k",forks:"1.8k",lang:"Python"},
+      {rank:10,slug:"Robbyant/lingbot-map",desc:"前馈式 3D 基础模型，可从流式数据实时重建三维场景。",stars:"10.1k",forks:"997",lang:"Python"}
     ]
   },
   monthly:{
     featured:[
-      {rank:1,slug:"apple/container",desc:"在 Mac 上利用轻量级虚拟机创建并运行 Linux 容器,使用 Swift 编写,针对 Apple silicon 优化。",stars:"46.6k",forks:"1.4k",lang:"Swift"},
-      {rank:2,slug:"DeusData/codebase-memory-mcp",desc:"高性能代码智能 MCP server,将代码库索引为持久知识图谱,平均仓库仅需毫秒级;支持 158 种语言,亚毫秒查询。",stars:"26.7k",forks:"2k",lang:"C"},
-      {rank:3,slug:"calesthio/OpenMontage",desc:"全球首个开源、agentic 化的视频生产系统:12 条流水线、52 个工具、500+ agent skills,把 AI 编程助手变成完整的视频制作工作室。",stars:"33.7k",forks:"3.9k",lang:"Python"}
+      {rank:1,slug:"apple/container",desc:"在 Mac 上利用轻量级虚拟机创建并运行 Linux 容器，Swift 编写，针对 Apple silicon 优化。",stars:"46.8k",forks:"1.4k",lang:"Swift"},
+      {rank:2,slug:"DeusData/codebase-memory-mcp",desc:"高性能代码智能 MCP server，将代码库索引为持久化知识图谱，单次索引毫秒级，支持 158 种语言、查询亚毫秒，token 用量减少 99%。",stars:"27.4k",forks:"2k",lang:"C"},
+      {rank:3,slug:"calesthio/OpenMontage",desc:"全球首个开源 agentic 视频制作系统，内置 12 条流水线、52 个工具与 500+ agent 技能，可把任意 AI 编程助手升级为完整视频工作室。",stars:"34.3k",forks:"3.9k",lang:"Python"}
     ],
     list:[
-      {rank:4,slug:"Panniantong/Agent-Reach",desc:"让 AI agent 拥有看见整个互联网的能力:通过一个 CLI 即可读取与搜索 Twitter、Reddit、YouTube、GitHub、B 站、小红书等平台,无需任何 API 费用。",stars:"51.3k",forks:"4.1k",lang:"Python"},
-      {rank:5,slug:"mvanhorn/last30days-skill",desc:"为 AI agent 提供的研究 skill,可跨 Reddit、X、YouTube、Hacker News、Polymarket 与全网检索指定主题,并综合输出有据可查的摘要。",stars:"49.2k",forks:"4.1k",lang:"Python"},
-      {rank:6,slug:"iptv-org/iptv",desc:"收录来自世界各地的公共 IPTV 电视频道清单。",stars:"130.6k",forks:"7.3k",lang:"TypeScript"},
-      {rank:7,slug:"interviewstreet/hiring-agent",desc:"用 AI agent 自动评估简历并打分。",stars:"4.8k",forks:"917",lang:"Python"},
-      {rank:8,slug:"phuryn/pm-skills",desc:"PM 技能市场:提供 100+ agentic skills、命令与插件,覆盖产品发现、策略制定、执行、发布与增长全流程。",stars:"22.6k",forks:"2.3k",lang:''},
-      {rank:9,slug:"asgeirtj/system_prompts_leaks",desc:"Extracted system prompts from Anthropic - Claude Fable 5, Opus 4.8, Claude Code, Claude Design. OpenAI - ChatGPT 5.5 Thinking, GPT 5.5 Instant, Codex. Google - Gemini 3.5 Flash, 3.1 Pro, Antigravity. xAI - Grok, Cursor, Copilot, VS Code, Perplexity, and more. Updated regularly.",stars:"50k",forks:"8.2k",lang:"JavaScript"},
-      {rank:10,slug:"ogulcancelik/herdr",desc:"agent multiplexer that lives in your terminal.",stars:"12.1k",forks:"702",lang:"Rust"}
+      {rank:4,slug:"NVIDIA/SkillSpector",desc:"AI agent 技能安全扫描器，可检测漏洞、恶意模式与安全风险。",stars:"12.1k",forks:"1k",lang:"Python"},
+      {rank:5,slug:"Panniantong/Agent-Reach",desc:"赋予 AI agent 浏览整个互联网的能力，一个 CLI 即可读取与搜索 Twitter、Reddit、YouTube、GitHub、Bilibili、小红书等平台，零 API 费用。",stars:"52k",forks:"4.2k",lang:"Python"},
+      {rank:6,slug:"iptv-org/iptv",desc:"全球可公开访问的 IPTV 频道合集。",stars:"130.8k",forks:"7.3k",lang:"TypeScript"},
+      {rank:7,slug:"mvanhorn/last30days-skill",desc:"AI agent 技能，自动抓取 Reddit、X、YouTube、Hacker News、Polymarket 等平台近 30 天内容并生成汇总。",stars:"49.7k",forks:"4.1k",lang:"Python"},
+      {rank:8,slug:"simplex-chat/simplex-chat",desc:"SimpleX — 首个完全无用户标识符的消息网络，设计上 100% 保护隐私，覆盖 iOS、Android 与桌面端。",stars:"18k",forks:"1.1k",lang:"Haskell"},
+      {rank:9,slug:"asgeirtj/system_prompts_leaks",desc:"汇总各厂商 LLM 的系统提示词泄露合集，覆盖 Anthropic Claude 全系、OpenAI ChatGPT/Codex、Google Gemini 系列。",stars:"51.5k",forks:"8.4k",lang:"JavaScript"},
+      {rank:10,slug:"interviewstreet/hiring-agent",desc:"用于简历评估与打分的 AI agent。",stars:"5k",forks:"932",lang:"Python"}
     ]
   }
 };
