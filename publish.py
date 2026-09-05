@@ -10,12 +10,12 @@ publish.py — GitHub Trending Dashboard 一键发布
 
 流程:
   1. scrape.py    抓取 GitHub Trending -> trending.json（失败即中止，绝不发布旧数据）
-  2. translate.py LLM 批量翻译 description_zh（429 自动退避重试）
-  3. translations.tsv 缓存桥接：为缺失翻译的条目回填历史缓存
-  4. render.py    渲染 index.html（校验 const DATA / 日期 / 中文）
-  5. 部署: wrangler 后台启动 + 轮询 CF API 确认 deployment success；
+  2. translate.py 翻译准备：translations.tsv 缓存桥接；缺失条目打印清单并退出码 2，
+                   由 agent（本会话模型）翻译后追加到 translations.tsv，重跑本脚本继续
+  3. render.py    渲染 index.html（校验 const DATA / 日期 / 中文）
+  4. 部署: wrangler 后台启动 + 轮询 CF API 确认 deployment success；
             wrangler 不可用/失败时回退 CF API multipart 直传
-  6. 验证线上 https://github-trending-dashboard.pages.dev/（重试直至标题=今日/const DATA/中文）
+  5. 验证线上 https://github-trending-dashboard.pages.dev/（重试直至标题=今日/const DATA/中文）
 """
 import json
 import os
@@ -90,42 +90,19 @@ def step_scrape() -> dict:
     return data
 
 
-# ---------- 2/3. 翻译 + 缓存桥接 ----------
+# ---------- 2/3. 翻译准备 + 缓存桥接 ----------
+
+class PendingTranslationError(Exception):
+    """需要 agent 翻译缺失描述"""
+
 
 def step_translate(data: dict) -> None:
-    log("2/5 LLM 翻译描述 ...")
-    subprocess.run([sys.executable, "translate.py"], cwd=BASE, timeout=600)
-
-    tsv = os.path.join(BASE, "translations.tsv")
-    cached = {}
-    if os.path.exists(tsv):
-        with open(tsv, encoding="utf-8") as f:
-            for line in f:
-                if "\t" in line:
-                    k, v = line.rstrip("\n").split("\t", 1)
-                    cached[k.strip()] = v.strip()
-
-    filled = 0
-    for p in ("daily", "weekly", "monthly"):
-        for repo in data.get(p, []):
-            if (not repo.get("description_zh") and repo.get("description")
-                    and repo["full_name"] in cached):
-                repo["description_zh"] = cached[repo["full_name"]]
-                filled += 1
-    if filled:
-        with open(os.path.join(BASE, "trending.json"), "w", encoding="utf-8") as f:
-            json.dump(data, f, ensure_ascii=False, indent=2)
-        log(f"缓存桥接回填 {filled} 条")
-
-    with_desc = {r["full_name"] for p in ("daily", "weekly", "monthly")
-                 for r in data.get(p, []) if r.get("description")}
-    zh_ok = {r["full_name"] for p in ("daily", "weekly", "monthly")
-             for r in data.get(p, []) if r.get("description_zh")}
-    missing = sorted(with_desc - zh_ok)
-    if missing:
-        log(f"警告 {len(missing)} 条缺少中文翻译（将显示英文）: " + ", ".join(missing))
-    else:
-        log("OK 翻译覆盖 100%")
+    log("2/5 翻译准备（缓存桥接 + 缺失清单）...")
+    r = subprocess.run([sys.executable, "translate.py"], cwd=BASE, timeout=120)
+    if r.returncode == 2:
+        raise PendingTranslationError("存在未翻译描述（清单见上方输出）")
+    if r.returncode != 0:
+        raise RuntimeError("translate.py 失败")
 
 
 # ---------- 4. 渲染 ----------
@@ -293,6 +270,10 @@ def main() -> int:
                 step_verify()
         log("=== 发布流程完成 ===")
         return 0
+    except PendingTranslationError as e:
+        log(f"待翻译: {e}")
+        log("请把上方清单逐条翻译后追加到 translations.tsv，然后重新执行 python publish.py")
+        return 2
     except Exception as e:
         log(f"发布失败: {e}")
         return 1
