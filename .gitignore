@@ -2,15 +2,10 @@
 .env
 .wrangler/
 
-# 抓取/翻译中间产物
+# 数据/运行产物（每次发布重新生成）
 trending.json
-index_template.html
+run.log
 
-# 部署/调试脚本
-scrape.py
-translate.py
-render.py
-deploy.py
-run.sh
-check.py
-verify.py
+# 调试/临时
+.playwright-mcp/
+*.bak
