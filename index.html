@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GitHub Trending - 2026-08-07</title>
+<title>GitHub Trending - 2026-09-05</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-sans/style.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-mono/style.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css">
@@ -195,12 +195,12 @@ button{font-family:inherit;border:none;cursor:pointer;background:none}
       <div class="brand-icon"><i class="ti ti-brand-github"></i></div>
       <div>
         <div class="brand-title">GitHub Trending</div>
-        <div class="brand-date">2026-08-07</div>
+        <div class="brand-date">2026-09-05</div>
       </div>
     </div>
     <div class="header-right">
-      <div class="stat-pill"><i class="ti ti-flame"></i>29 热门项目</div>
-      <div class="stat-pill"><i class="ti ti-code"></i>14 种语言</div>
+      <div class="stat-pill"><i class="ti ti-flame"></i>27 热门项目</div>
+      <div class="stat-pill"><i class="ti ti-code"></i>9 种语言</div>
     </div>
   </div>
 </header>
@@ -212,9 +212,9 @@ button{font-family:inherit;border:none;cursor:pointer;background:none}
     <h1>发现 <span>GitHub</span> 热门趋势</h1>
     <p class="hero-sub">追踪每日、每周、每月的 GitHub 热门项目，洞察开源社区最新动态。</p>
     <div class="hero-stats">
-      <div class="hero-stat"><div class="hero-stat-val" data-count="29">0</div><div class="hero-stat-label">跟踪项目</div></div>
+      <div class="hero-stat"><div class="hero-stat-val" data-count="27">0</div><div class="hero-stat-label">跟踪项目</div></div>
       <div class="hero-stat-divider"></div>
-      <div class="hero-stat"><div class="hero-stat-val" data-count="14">0</div><div class="hero-stat-label">编程语言</div></div>
+      <div class="hero-stat"><div class="hero-stat-val" data-count="9">0</div><div class="hero-stat-label">编程语言</div></div>
       <div class="hero-stat-divider"></div>
       <div class="hero-stat"><div class="hero-stat-val" data-count="24">0</div><div class="hero-stat-label">小时更新</div></div>
     </div>
@@ -273,50 +273,50 @@ const LANG_COLORS={
 const DATA={
   daily:{
     featured:[
-      {rank:1,slug:"TencentCloud/TencentDB-Agent-Memory",desc:"腾讯云推出的团队级 AI Agent 记忆中枢，将对话、文档和代码转化为四种可复用记忆资产（对话记忆、技能、LLM-Wiki、代码图谱），支持跨 Agent 和框架的治理与共享。",stars:"16.5k",forks:"1.5k",lang:"TypeScript"},
-      {rank:2,slug:"addyosmani/agent-skills",desc:"面向 AI 编程 Agent 的生产级工程技能集合，涵盖代码质量、性能优化等实战经验。",stars:"83k",forks:"8.9k",lang:"JavaScript"},
-      {rank:3,slug:"cloudflare/computer",desc:"Cloudflare 推出的 Agent 云端计算机方案，让 AI Agent 拥有自己的虚拟运行环境。",stars:"4.9k",forks:"244",lang:"TypeScript"}
+      {rank:1,slug:"mattpocock/skills",desc:"面向真正工程师的 Skills 集合，直接来自作者的 .agents 目录。",stars:"251.8k",forks:"21.3k",lang:"Shell"},
+      {rank:2,slug:"affaan-m/ECC",desc:"Agent 运行框架性能优化系统，包含 Skills、直觉、记忆、安全与研究优先开发，适用于 Claude Code、Codex、Opencode、Cursor 等。",stars:"249.3k",forks:"37.6k",lang:"JavaScript"},
+      {rank:3,slug:"DietrichGebert/ponytail",desc:"让你的智能体像最懒的资深工程师一样思考：最好的代码是你从未写过的代码。",stars:"127.4k",forks:"6.8k",lang:"JavaScript"}
     ],
     list:[
-      {rank:4,slug:"mattpocock/skills",desc:"面向真实工程师的实用技能集，来自作者的 .agents 目录，涵盖日常开发中的高效工作流。",stars:"207.2k",forks:"17.9k",lang:"Shell"},
-      {rank:5,slug:"goauthentik/authentik",desc:"开源身份认证中间件，支持 OAuth2、SAML、LDAP 等多种协议，充当各类应用的认证胶水层。",stars:"23.2k",forks:"1.8k",lang:"Python"},
-      {rank:6,slug:"huangruiteng/loopx",desc:"轻量级长时间运行 AI Agent 团队的循环工程状态内核，兼容 Codex、Claude Code 等主流编程 Agent，提供持久化目标、配额感知自动唤醒、可执行待办和证据日志。",stars:"2.9k",forks:"219",lang:"Python"},
-      {rank:7,slug:"google/guava",desc:"Google 核心 Java 工具库，包含集合、缓存、并发、IO 等常用组件，Java 开发事实标准。",stars:"51.7k",forks:"11.2k",lang:"Java"},
-      {rank:8,slug:"TapXWorld/ChinaTextbook",desc:"收录中国小学、初中、高中及大学各科 PDF 教材的开源合集。",stars:"77.2k",forks:"17.4k",lang:"Roff"},
-      {rank:9,slug:"Significant-Gravitas/AutoGPT",desc:"AutoGPT 致力于让 AI 对每个人都触手可及，提供开箱即用的自主 AI Agent 框架，让用户专注于真正重要的事。",stars:"186k",forks:"46.1k",lang:"Python"},
-      {rank:10,slug:"tirth8205/code-review-graph",desc:"本地优先的代码智能图谱工具，支持 MCP 和 CLI，为 AI 编程工具构建持久化代码库地图，显著减少 Code Review 和大仓库场景下的上下文开销。",stars:"29.1k",forks:"2.7k",lang:"Python"}
+      {rank:4,slug:"NousResearch/hermes-agent",desc:"与你共同成长的智能体。",stars:"241.8k",forks:"49.7k",lang:"Python"},
+      {rank:5,slug:"fmtlib/fmt",desc:"现代 C++ 格式化库。",stars:"25.5k",forks:"3k",lang:"C++"},
+      {rank:6,slug:"anthropics/skills",desc:"Anthropic 官方 Agent Skills 公共仓库。",stars:"174.4k",forks:"20.7k",lang:"Python"},
+      {rank:7,slug:"cathrynlavery/diagram-design",desc:"38 种编辑部级图表类型，适用于 Claude Code、Codex 和 Pi，自包含 HTML + SVG，无阴影、无 Mermaid 模板糊弄。",stars:"31.5k",forks:"2k",lang:"HTML"},
+      {rank:8,slug:"anomalyco/opencode",desc:"开源编码智能体。",stars:"204.5k",forks:"26.7k",lang:"TypeScript"},
+      {rank:9,slug:"ruvnet/ruflo",desc:"开源 agent 元框架：部署智能多智能体集群、编排自主工作流、构建对话式 AI 系统，支持自适应记忆、自学习与 RAG 集成。",stars:"70.6k",forks:"8.4k",lang:"TypeScript"},
+      {rank:10,slug:"humanlayer/skills",desc:'',stars:"2.6k",forks:"72",lang:"TypeScript"}
     ]
   },
   weekly:{
     featured:[
-      {rank:1,slug:"zhaoxuya520/reverse-skill",desc:"逆向工程/渗透测试/安全研究技能路由包，支持 AI 自动路由、按需自举工具链和自动进化经验库，兼容 Claude Code、Kiro、Cursor、Cline 等主流 AI 编程客户端。",stars:"19.9k",forks:"2.7k",lang:"PowerShell"},
-      {rank:2,slug:"microsoft/AI-For-Beginners",desc:"微软出品的 AI 入门课程，12 周 24 课时，覆盖机器学习、深度学习、NLP、计算机视觉等核心主题。",stars:"62.8k",forks:"12.2k",lang:"Jupyter Notebook"},
-      {rank:3,slug:"TencentCloud/TencentDB-Agent-Memory",desc:"腾讯云推出的团队级 AI Agent 记忆中枢，将对话、文档和代码转化为四种可复用记忆资产（对话记忆、技能、LLM-Wiki、代码图谱），支持跨 Agent 和框架的治理与共享。",stars:"16.5k",forks:"1.5k",lang:"TypeScript"}
+      {rank:1,slug:"tt-a1i/archify",desc:"构建美观可验证的架构/流程/时序/数据流/生命周期图的 Agent Skill，自包含 HTML 带动态效果与清晰导出。",stars:"49k",forks:"3.2k",lang:"JavaScript"},
+      {rank:2,slug:"THU-MAIC/OpenMAIC",desc:"开放多智能体互动课堂：一键获得沉浸式多智能体学习体验。",stars:"31.8k",forks:"5.2k",lang:"TypeScript"},
+      {rank:3,slug:"Gitlawb/openclaude",desc:"随处运行，兼容一切。",stars:"32.7k",forks:"9.1k",lang:"TypeScript"}
     ],
     list:[
-      {rank:4,slug:"lyogavin/airllm",desc:"在单张 4GB 显存 GPU 上运行 700 亿参数大模型推理，大幅降低本地 LLM 部署门槛。",stars:"29.7k",forks:"3.2k",lang:"Jupyter Notebook"},
-      {rank:5,slug:"virgiliojr94/book-to-skill",desc:"将任意技术书籍 PDF 一键转化为 Claude Code 技能，方便在工作中随时查阅和引用。",stars:"17.7k",forks:"1.9k",lang:"Python"},
-      {rank:6,slug:"block/buzz",desc:"蜂巢式群体智能通信平台，让团队像蜂群一样高效协作。",stars:"24.3k",forks:"2.8k",lang:"Rust"},
-      {rank:7,slug:"esengine/DeepSeek-Reasonix",desc:"DeepSeek 原生终端 AI 编程 Agent，围绕前缀缓存稳定性设计，适合长期驻留运行。",stars:"32.5k",forks:"2.1k",lang:"Go"},
-      {rank:8,slug:"different-ai/openwork",desc:"Claude Cowork 的开源替代方案，基于 opencode 构建，提供多 Agent 协同编程体验。",stars:"21.3k",forks:"2.1k",lang:"TypeScript"},
-      {rank:9,slug:"agavra/tuicr",desc:"基于终端的代码审查 TUI 工具，支持 Vim 风格快捷键操作。",stars:"2.5k",forks:"188",lang:"Rust"},
-      {rank:10,slug:"ayghri/i-have-adhd",desc:"防止 AI 编程 Agent 把答案埋在冗长输出中的技能，提供 ADHD 友好的简洁回复格式。",stars:"17.8k",forks:"1k",lang:"Python"}
+      {rank:4,slug:"google-research/timesfm",desc:"Google Research 自研的时间序列基础模型 TimesFM，用于时间序列预测。",stars:"31.2k",forks:"3k",lang:"Python"},
+      {rank:5,slug:"jingyaogong/minimind",desc:"2 小时从零训练一个 64M 参数的大语言模型！",stars:"58.7k",forks:"7.6k",lang:"Python"},
+      {rank:6,slug:"tailscale/tailcat",desc:"像 netcat 一样，但走 Tailscale 数据面，不依赖 Tailscale 控制面。",stars:"6.3k",forks:"243",lang:"Go"},
+      {rank:7,slug:"K-Dense-AI/scientific-agent-skills",desc:"把任意 AI 智能体变成 AI 科学家：面向科学的 #1 Agent Skills 库，165 个即用技能 + 100+ 科学数据库，覆盖生物、化学、医学与药物发现。",stars:"42.9k",forks:"3.9k",lang:"Python"},
+      {rank:8,slug:"Lakr233/vphone-cli",desc:'',stars:"10.7k",forks:"1.4k",lang:"Swift"},
+      {rank:9,slug:"fmtlib/fmt",desc:"现代 C++ 格式化库。",stars:"25.5k",forks:"3k",lang:"C++"},
+      {rank:10,slug:"handsomestWei/patent-disclosure-skill",desc:"中国专利 .skill：专利点挖掘与交底书（发明/实用/外观）编写，通俗解读专利，嗅探政策动向，辅助审查答复。",stars:"7.5k",forks:"820",lang:"Python"}
     ]
   },
   monthly:{
     featured:[
-      {rank:1,slug:"permissionlesstech/bitchat",desc:"基于蓝牙 Mesh 网络的去中心化聊天应用，IRC 风格体验，无需互联网即可通信。",stars:"34.7k",forks:"5.5k",lang:"Swift"},
-      {rank:2,slug:"diegosouzapw/OmniRoute",desc:"免费开源 AI 网关，单一端点支持 290+ 提供商（90+ 免费）、500+ 模型，兼容 Claude Code、Codex、Cursor 等主流客户端，支持配额感知自动降级和 Token 压缩节省 15-95%。",stars:"41.8k",forks:"5.5k",lang:"TypeScript"},
-      {rank:3,slug:"stablyai/orca",desc:"并行 Agent 编程 ADE（AI 开发环境），支持用自有订阅运行任意编程 Agent，提供桌面端、移动端和 VPS 部署。",stars:"39k",forks:"2.8k",lang:"TypeScript"}
+      {rank:1,slug:"cathrynlavery/diagram-design",desc:"38 种编辑部级图表类型，适用于 Claude Code、Codex 和 Pi，自包含 HTML + SVG，无阴影、无 Mermaid 模板糊弄。",stars:"31.5k",forks:"2k",lang:"HTML"},
+      {rank:2,slug:"omacom/omarchy",desc:"美观、现代、有主见的 Linux 发行版。",stars:"38.2k",forks:"4.1k",lang:"Shell"},
+      {rank:3,slug:"semantica-agi/semantica",desc:"面向上下文与可信 AI 系统的图原生基础设施。",stars:"12.1k",forks:"1.4k",lang:"Python"}
     ],
     list:[
-      {rank:4,slug:"emilkowalski/skills",desc:"面向设计师和工程师的实用技能集，涵盖 UI 设计与开发工作流。",stars:"26.4k",forks:"1.4k",lang:''},
-      {rank:5,slug:"koala73/worldmonitor",desc:"实时全球情报仪表盘，AI 驱动的新闻聚合、地缘政治监控和基础设施追踪，提供统一态势感知界面。",stars:"79.4k",forks:"11.9k",lang:"TypeScript"},
-      {rank:6,slug:"Nutlope/hallmark",desc:"反 AI 审美同质化的设计技能，适用于 Claude Code、Cursor 和 Codex，帮助生成有设计感的界面。",stars:"22.3k",forks:"1.1k",lang:"CSS"},
-      {rank:7,slug:"tt-a1i/archify",desc:"Agent 架构图技能，可生成精美的架构、流程、时序、数据流和生命周期图表，输出为带动画的自包含 HTML。",stars:"9.9k",forks:"775",lang:"HTML"},
-      {rank:8,slug:"huggingface/speech-to-speech",desc:"使用开源模型构建本地语音 Agent，实现端到端语音对话能力。",stars:"11.4k",forks:"1.4k",lang:"Python"},
-      {rank:9,slug:"1jehuang/jcode",desc:"最节省 RAM 的 AI 编程评测框架，专为资源受限环境优化。",stars:"16.2k",forks:"1.8k",lang:"Rust"},
-      {rank:10,slug:"iOfficeAI/OfficeCLI",desc:"首个专为 AI Agent 打造的 Office 套件，支持读取、编辑和自动化 Word、Excel、PowerPoint 文件，免费开源，单一二进制文件，无需安装 Office。",stars:"26.2k",forks:"1.8k",lang:"C#"}
+      {rank:4,slug:"cursor/plugins",desc:"Cursor 插件规范与官方插件集合。",stars:"6.9k",forks:"574",lang:"TypeScript"},
+      {rank:5,slug:"tt-a1i/archify",desc:"构建美观可验证的架构/流程/时序/数据流/生命周期图的 Agent Skill，自包含 HTML 带动态效果与清晰导出。",stars:"49k",forks:"3.2k",lang:"JavaScript"},
+      {rank:6,slug:"anthropics/claude-plugins-community",desc:"Claude Cowork 与 Claude Code 的社区插件市场，只读镜像。",stars:"3.5k",forks:"263",lang:"Python"},
+      {rank:7,slug:"PrimeIntellect-ai/prime-agent",desc:"面向编码工作流与长时自主任务的自我改进 RLM 智能体。",stars:"19.9k",forks:"2.2k",lang:"TypeScript"},
+      {rank:8,slug:"AprilNEA/OpenLogi",desc:"用 Rust 编写的本地优先 Logitech Options+ 替代品，通过 HID++ 重映射按键、DPI 与 SmartShift，无账号、无遥测。",stars:"19.4k",forks:"586",lang:"Rust"},
+      {rank:9,slug:"volcengine/OpenViking",desc:"面向 AI 智能体的自演进上下文数据库：统一智能体记忆、知识 RAG 与 Skills。",stars:"35.6k",forks:"2.7k",lang:"Python"},
+      {rank:10,slug:"freestylefly/awesome-gpt-image-2",desc:"Prompt as Code：GPT-Image2 工业级提示词引擎与模板库，530+ 案例逆向工程，20+ 套工业级模板。",stars:"28.1k",forks:"2.7k",lang:"JavaScript"}
     ]
   }
 };
