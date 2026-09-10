@@ -9,3 +9,5 @@ run.log
 # 调试/临时
 .playwright-mcp/
 *.bak
+__pycache__/
+*.pyc
