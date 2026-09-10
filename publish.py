@@ -56,13 +56,22 @@ def load_cf_env() -> dict:
     return {"token": token, "acc": acc}
 
 
-def cf_get(cf: dict, path: str) -> dict:
-    req = urllib.request.Request(
-        f"https://api.cloudflare.com/client/v4{path}",
-        headers={"Authorization": "Bearer " + cf["token"]},
-    )
-    with urllib.request.urlopen(req, timeout=20) as r:
-        return json.loads(r.read().decode())
+def cf_get(cf: dict, path: str, tries: int = 5) -> dict:
+    """CF API GET，带重试（本机 egress 偶发 SSL EOF 抖动）"""
+    last = None
+    for i in range(tries):
+        try:
+            req = urllib.request.Request(
+                f"https://api.cloudflare.com/client/v4{path}",
+                headers={"Authorization": "Bearer " + cf["token"]},
+            )
+            with urllib.request.urlopen(req, timeout=25) as r:
+                return json.loads(r.read().decode())
+        except Exception as e:
+            last = e
+            if i < tries - 1:
+                time.sleep(5)
+    raise RuntimeError(f"CF API 不可达: {last}")
 
 
 def latest_deployment(cf: dict) -> dict | None:
@@ -130,7 +139,11 @@ def poll_deployment(cf: dict, before_id: str | None, timeout: int = 150) -> dict
     deadline = time.time() + timeout
     while time.time() < deadline:
         time.sleep(10)
-        dep = latest_deployment(cf)
+        try:
+            dep = latest_deployment(cf)
+        except Exception as e:
+            log(f"轮询 API 抖动，继续重试: {e}")
+            continue
         if not dep or dep.get("id") == before_id:
             continue
         stage = dep.get("latest_stage") or {}
@@ -158,11 +171,15 @@ def deploy_wrangler(cf: dict) -> dict | None:
         "https_proxy": PROXY, "http_proxy": PROXY,
     }
     cmd = f'"{wr}" pages deploy . --project-name={PROJECT} --commit-dirty=true'
-    log(f"wrangler 后台部署 (pid 后台运行) ...")
+    log("wrangler 后台部署 ...")
     p = subprocess.Popen(cmd, shell=True, cwd=BASE, env=env,
                          stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     try:
         dep = poll_deployment(cf, before_id, timeout=150)
+    except Exception as e:
+        # 轮询本身出错不代表部署失败：交给上层按"未确认"处理
+        log(f"wrangler 轮询异常: {e}")
+        dep = None
     finally:
         if p.poll() is None:
             p.kill()
@@ -198,11 +215,19 @@ def deploy_api(cf: dict) -> dict | None:
         method="POST",
     )
     log("CF API 直传 ...")
-    try:
-        with urllib.request.urlopen(req, timeout=120) as r:
-            resp = json.loads(r.read().decode())
-    except urllib.error.HTTPError as e:
-        log(f"API 部署失败: {e.code} {e.read().decode()[:300]}")
+    resp = None
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(req, timeout=120) as r:
+                resp = json.loads(r.read().decode())
+            break
+        except urllib.error.HTTPError as e:
+            log(f"API 部署失败: {e.code} {e.read().decode()[:300]}")
+            return None
+        except Exception as e:
+            log(f"API 部署网络异常 ({attempt + 1}/3): {e}")
+            time.sleep(5)
+    if resp is None:
         return None
     if not resp.get("success"):
         log(f"API 部署失败: {resp.get('errors')}")
@@ -213,9 +238,22 @@ def deploy_api(cf: dict) -> dict | None:
 
 def step_deploy(cf: dict, api_only: bool) -> str | None:
     log("4/5 部署到 Cloudflare Pages ...")
+    before = latest_deployment(cf)
+    before_id = before.get("id") if before else None
+
     dep = None
     if not api_only:
         dep = deploy_wrangler(cf)
+    if dep is None:
+        # wrangler 未确认成功：复查是否已有更新且成功的部署（避免"其实成功但轮询抖动"导致重复部署）
+        try:
+            latest = latest_deployment(cf)
+            stage = (latest or {}).get("latest_stage") or {}
+            if latest and latest.get("id") != before_id and stage.get("status") == "success":
+                log("复查发现新部署已成功（轮询抖动，非部署失败）")
+                dep = latest
+        except Exception as e:
+            log(f"复查最新部署失败: {e}")
     if dep is None:
         log("回退 CF API 直传 ...")
         dep = deploy_api(cf)

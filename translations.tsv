@@ -82,3 +82,18 @@ PrimeIntellect-ai/prime-agent	面向编码工作流与长时自主任务的自�
 AprilNEA/OpenLogi	用 Rust 编写的本地优先 Logitech Options+ 替代品，通过 HID++ 重映射按键、DPI 与 SmartShift，无账号、无遥测。
 volcengine/OpenViking	面向 AI 智能体的自演进上下文数据库：统一智能体记忆、知识 RAG 与 Skills。
 freestylefly/awesome-gpt-image-2	Prompt as Code：GPT-Image2 工业级提示词引擎与模板库，530+ 案例逆向工程，20+ 套工业级模板。
+openai/skills	Codex 的 Skills 目录。
+blader/humanizer	去除文本中 AI 生成痕迹的 agent 技能。
+llvm/llvm-project	LLVM 项目：一套模块化、可复用的编译器与工具链技术集合。
+magnitudedev/magnitude	开源推理服务器：为你的硬件运行最优本地模型，可直接接入你正在使用的 agent，支持 Pi、OpenCode、Hermes、OpenClaw、Codex、Claude Code、Oh My Pi 与 Cline 等。
+pollen-robotics/microduck_rl	面向 Microduck (mjlab) 的强化学习训练环境。
+debpalash/VoiceStudio	VoiceStudio 是开源、完全本地的 ElevenLabs 替代方案——支持语音克隆、声音设计、视频配音、听写、转录与有声书制作，覆盖 646 种语言。
+xai-org/x-algorithm	驱动 X 平台 For You 信息流推荐的核心算法。
+Tencent/teamai-cli	让每个团队都实现 AI 原生。
+obra/superpowers	一套切实可用的 agent 技能框架与软件开发方法论。
+pascalorg/editor	开源 3D 建筑编辑器，提供本地 CLI、MCP 工具，以及面向人类与 AI agent 的实用工作流。
+TauricResearch/TradingAgents	TradingAgents：多智能体 LLM 金融交易框架。
+liquidslr/system-design-notes	《系统设计面试：内部人士指南》读书笔记。
+openai/plugins	OpenAI 官方插件集。
+ChromeDevTools/chrome-devtools-mcp	面向编码 agent 的 Chrome DevTools（MCP 服务）。
+heygen-com/hyperframes	写 HTML，渲染视频，为 agent 而生。
